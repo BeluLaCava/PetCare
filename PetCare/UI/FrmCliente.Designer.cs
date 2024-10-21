@@ -40,19 +40,17 @@
             label1 = new Label();
             dgvClientes = new DataGridView();
             groupBox4 = new GroupBox();
-            button2 = new Button();
+            btnModificar = new Button();
             label8 = new Label();
             label7 = new Label();
-            label6 = new Label();
             label5 = new Label();
             txtModificarTelefono = new TextBox();
             txtModificarEmail = new TextBox();
-            txtModificarApellido = new TextBox();
             txtModificarDireccion = new TextBox();
             groupBox2 = new GroupBox();
             label9 = new Label();
             cmbCliente = new ComboBox();
-            button3 = new Button();
+            btnEliminar = new Button();
             cmbEliminar = new ComboBox();
             label10 = new Label();
             groupBox3 = new GroupBox();
@@ -170,8 +168,10 @@
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientes.Location = new Point(6, 22);
+            dgvClientes.MultiSelect = false;
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
+            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(586, 524);
             dgvClientes.TabIndex = 4;
             // 
@@ -185,15 +185,16 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Clientes";
             // 
-            // button2
+            // btnModificar
             // 
-            button2.Font = new Font("Segoe UI", 12F);
-            button2.Location = new Point(171, 169);
-            button2.Name = "button2";
-            button2.Size = new Size(143, 42);
-            button2.TabIndex = 9;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnModificar.Font = new Font("Segoe UI", 12F);
+            btnModificar.Location = new Point(171, 169);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(143, 42);
+            btnModificar.TabIndex = 9;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // label8
             // 
@@ -209,27 +210,17 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(8, 148);
+            label7.Location = new Point(171, 87);
             label7.Name = "label7";
             label7.Size = new Size(48, 21);
             label7.TabIndex = 11;
             label7.Text = "Email";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(171, 21);
-            label6.Name = "label6";
-            label6.Size = new Size(141, 21);
-            label6.TabIndex = 12;
-            label6.Text = "Apellido y Nombre";
-            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(171, 87);
+            label5.Location = new Point(171, 21);
             label5.Name = "label5";
             label5.Size = new Size(75, 21);
             label5.TabIndex = 13;
@@ -246,23 +237,15 @@
             // txtModificarEmail
             // 
             txtModificarEmail.Font = new Font("Segoe UI", 12F);
-            txtModificarEmail.Location = new Point(8, 172);
+            txtModificarEmail.Location = new Point(171, 111);
             txtModificarEmail.Name = "txtModificarEmail";
             txtModificarEmail.Size = new Size(143, 29);
             txtModificarEmail.TabIndex = 15;
             // 
-            // txtModificarApellido
-            // 
-            txtModificarApellido.Font = new Font("Segoe UI", 12F);
-            txtModificarApellido.Location = new Point(171, 45);
-            txtModificarApellido.Name = "txtModificarApellido";
-            txtModificarApellido.Size = new Size(143, 29);
-            txtModificarApellido.TabIndex = 16;
-            // 
             // txtModificarDireccion
             // 
             txtModificarDireccion.Font = new Font("Segoe UI", 12F);
-            txtModificarDireccion.Location = new Point(171, 111);
+            txtModificarDireccion.Location = new Point(171, 45);
             txtModificarDireccion.Name = "txtModificarDireccion";
             txtModificarDireccion.Size = new Size(143, 29);
             txtModificarDireccion.TabIndex = 17;
@@ -272,14 +255,12 @@
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(cmbCliente);
             groupBox2.Controls.Add(txtModificarDireccion);
-            groupBox2.Controls.Add(txtModificarApellido);
             groupBox2.Controls.Add(txtModificarEmail);
             groupBox2.Controls.Add(txtModificarTelefono);
             groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(button2);
+            groupBox2.Controls.Add(btnModificar);
             groupBox2.Location = new Point(12, 225);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(328, 224);
@@ -305,16 +286,18 @@
             cmbCliente.Name = "cmbCliente";
             cmbCliente.Size = new Size(143, 29);
             cmbCliente.TabIndex = 18;
+            cmbCliente.SelectedIndexChanged += cmbCliente_SelectedIndexChanged;
             // 
-            // button3
+            // btnEliminar
             // 
-            button3.Font = new Font("Segoe UI", 12F);
-            button3.Location = new Point(171, 40);
-            button3.Name = "button3";
-            button3.Size = new Size(143, 42);
-            button3.TabIndex = 20;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            btnEliminar.Font = new Font("Segoe UI", 12F);
+            btnEliminar.Location = new Point(171, 40);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(143, 42);
+            btnEliminar.TabIndex = 20;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // cmbEliminar
             // 
@@ -331,15 +314,15 @@
             label10.Font = new Font("Segoe UI", 12F);
             label10.Location = new Point(19, 29);
             label10.Name = "label10";
-            label10.Size = new Size(61, 21);
+            label10.Size = new Size(58, 21);
             label10.TabIndex = 22;
-            label10.Text = "label10";
+            label10.Text = "Cliente";
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(cmbEliminar);
-            groupBox3.Controls.Add(button3);
+            groupBox3.Controls.Add(btnEliminar);
             groupBox3.Location = new Point(12, 455);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(328, 109);
@@ -359,6 +342,7 @@
             Name = "FrmCliente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCliente";
+            Load += FrmCliente_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
@@ -384,19 +368,17 @@
         private Label label1;
         private DataGridView dgvClientes;
         private GroupBox groupBox4;
-        private Button button2;
+        private Button btnModificar;
         private Label label8;
         private Label label7;
-        private Label label6;
         private Label label5;
         private TextBox txtModificarTelefono;
         private TextBox txtModificarEmail;
-        private TextBox txtModificarApellido;
         private TextBox txtModificarDireccion;
         private GroupBox groupBox2;
         private Label label9;
         private ComboBox cmbCliente;
-        private Button button3;
+        private Button btnEliminar;
         private ComboBox cmbEliminar;
         private Label label10;
         private GroupBox groupBox3;
