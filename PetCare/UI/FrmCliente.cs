@@ -15,6 +15,7 @@ namespace UI
 {
     public partial class FrmCliente : Form
     {
+        private List<Cliente> listaCliente = new List<Cliente>();
         private Cliente cliente;
         private ClienteBusiness clienteBusiness = new ClienteBusiness();
 
@@ -27,24 +28,18 @@ namespace UI
         {
             try
             {
-                cliente = new Cliente();
-
-                cliente.Nombre = txtApellido.Text;
-                cliente.Direccion = txtDireccion.Text;
-                cliente.Email = txtEmail.Text;
-                cliente.Telefono = txtTelefono.Text;
-                clienteBusiness.GuardarCliente(cliente);
+                clienteBusiness.GuardarClientes(listaCliente);
+                listaCliente = new List<Cliente>();
                 MostrarClientes();
                 ObtenerClientes();
-                LimpiarCampos();
-                MessageBox.Show("Cliente Agregado con exito");
-
+                MessageBox.Show("Cliente agregado con exito");
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
             }
+            
         }
 
         public void MostrarClientes()
@@ -144,8 +139,32 @@ namespace UI
 
                 MessageBox.Show(ex.Message);
             }
-               
-            
+
+
+        }
+
+        private void btnBorrador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cliente = new Cliente();
+
+                cliente.Nombre = txtApellido.Text;
+                cliente.Direccion = txtDireccion.Text;
+                cliente.Email = txtEmail.Text.ToLower();
+                cliente.Telefono = txtTelefono.Text;
+                listaCliente.Add(cliente);
+                
+                LimpiarCampos();
+                MessageBox.Show("Cliente agregado con exito");
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

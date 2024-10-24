@@ -54,6 +54,7 @@
             cmbEliminar = new ComboBox();
             label10 = new Label();
             groupBox3 = new GroupBox();
+            btnBorrador = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             groupBox4.SuspendLayout();
@@ -68,12 +69,13 @@
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(143, 42);
             btnGuardar.TabIndex = 0;
-            btnGuardar.Text = "Guardar";
+            btnGuardar.Text = "Confirmar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += button1_Click;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnBorrador);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtTelefono);
             groupBox1.Controls.Add(txtDireccion);
@@ -166,6 +168,7 @@
             // 
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientes.Location = new Point(6, 22);
             dgvClientes.MultiSelect = false;
@@ -330,6 +333,17 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Cliente";
             // 
+            // btnBorrador
+            // 
+            btnBorrador.Font = new Font("Segoe UI", 12F);
+            btnBorrador.Location = new Point(8, 152);
+            btnBorrador.Name = "btnBorrador";
+            btnBorrador.Size = new Size(143, 42);
+            btnBorrador.TabIndex = 9;
+            btnBorrador.Text = "Guardar borrador";
+            btnBorrador.UseVisualStyleBackColor = true;
+            btnBorrador.Click += btnBorrador_Click;
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -382,5 +396,6 @@
         private ComboBox cmbEliminar;
         private Label label10;
         private GroupBox groupBox3;
+        private Button btnBorrador;
     }
 }
