@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace BLL
 {
@@ -19,27 +20,32 @@ namespace BLL
         {
             try
             {
-                if(string.IsNullOrEmpty(cliente.Nombre))
+                using (var trx = new TransactionScope())
                 {
-                    throw new Exception("Complete el nombre y apellido del cliente");
-                }
 
-                if (string.IsNullOrEmpty(cliente.Direccion))
-                {
-                    throw new Exception("Complete la direccion");
-                }
-                if (string.IsNullOrEmpty(cliente.Telefono) || !EsTelefonoValido(cliente.Telefono))
-                {
-                    throw new Exception("El telefono debe ser numerico y minimo 8 numeros");
-                }
 
-                if (string.IsNullOrEmpty(cliente.Email) || !EsEmailValido(cliente.Email))
-                {
-                    throw new Exception("Ingrese un email válido (ejemplo@ejemplo.com)");
-                }
-               
-                clienteData.GuardarCliente(cliente);
+                    if (string.IsNullOrEmpty(cliente.Nombre))
+                    {
+                        throw new Exception("Complete el nombre y apellido del cliente");
+                    }
 
+                    if (string.IsNullOrEmpty(cliente.Direccion))
+                    {
+                        throw new Exception("Complete la direccion");
+                    }
+                    if (string.IsNullOrEmpty(cliente.Telefono) || !EsTelefonoValido(cliente.Telefono))
+                    {
+                        throw new Exception($"El telefono de {cliente.Nombre} debe ser numerico y minimo 8 numeros");
+                    }
+
+                    if (string.IsNullOrEmpty(cliente.Email) || !EsEmailValido(cliente.Email))
+                    {
+                        throw new Exception("Ingrese un email válido (ejemplo@ejemplo.com)");
+                    }
+
+                    clienteData.GuardarCliente(cliente);
+                    trx.Complete();
+                }
             }
             catch (Exception ex)
             {
@@ -48,12 +54,33 @@ namespace BLL
             }
 
         }
+        public void GuardarClientes(List<Cliente> cliente)
+        {
+            try
+            {
+                using (var trx = new TransactionScope())
+                {
+
+
+                    foreach (Cliente clientes in cliente)
+                    {
+                        GuardarCliente(clientes);
+                    }
+                    trx.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         private bool EsTelefonoValido(string telefono)
         {
             return Regex.IsMatch(telefono, @"^\d{8,}$");
         }
 
-        // Método para validar un email usando expresión regular
+        
         private bool EsEmailValido(string email)
         {
             string patron = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
@@ -76,20 +103,24 @@ namespace BLL
         {
             try
             {
-                if (string.IsNullOrEmpty(direccion))
+                using (var trx = new TransactionScope())
                 {
-                    throw new Exception("Complete la direccion");
-                }
-                if (string.IsNullOrEmpty(telefono) || !EsTelefonoValido(telefono))
-                {
-                    throw new Exception("El telefono debe ser numerico y minimo 8 numeros");
-                }
+                    if (string.IsNullOrEmpty(direccion))
+                    {
+                        throw new Exception("Complete la direccion");
+                    }
+                    if (string.IsNullOrEmpty(telefono) || !EsTelefonoValido(telefono))
+                    {
+                        throw new Exception("El telefono debe ser numerico y minimo 8 numeros");
+                    }
 
-                if (string.IsNullOrEmpty(email) || !EsEmailValido(email))
-                {
-                    throw new Exception("Ingrese un email válido (ejemplo@ejemplo.com)");
+                    if (string.IsNullOrEmpty(email) || !EsEmailValido(email))
+                    {
+                        throw new Exception("Ingrese un email válido (ejemplo@ejemplo.com)");
+                    }
+                    clienteData.ModificarCliente(idSeleccionado, direccion, email, telefono);
+                    trx.Complete();
                 }
-                clienteData.ModificarCliente(idSeleccionado, direccion, email, telefono);
             }
             catch (Exception ex)
             {
@@ -101,8 +132,11 @@ namespace BLL
         {
             try
             {
-                clienteData.EliminarCliente(idcliente);
-
+                using (var trx = new TransactionScope())
+                {
+                    clienteData.EliminarCliente(idcliente);
+                    trx.Complete();
+                }
             }
             catch (Exception ex)
             {
