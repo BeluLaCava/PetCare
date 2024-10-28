@@ -39,7 +39,7 @@ namespace UI
 
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         public void MostrarClientes()
@@ -56,19 +56,28 @@ namespace UI
                 cmbCliente.ValueMember = "ID";
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
         }
         public void ObtenerClientes()
         {
-            List<Cliente> listaClientes = clienteBusiness.ObtenerCliente();
+            try
+            {
+                List<Cliente> listaClientes = clienteBusiness.ObtenerCliente();
 
-            cmbEliminar.DataSource = listaClientes;
-            cmbEliminar.DisplayMember = "Nombre";
-            cmbEliminar.ValueMember = "ID";
+                cmbEliminar.DataSource = listaClientes;
+                cmbEliminar.DisplayMember = "Nombre";
+                cmbEliminar.ValueMember = "ID";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
 
         }
         private void btnModificar_Click(object sender, EventArgs e)
@@ -154,7 +163,7 @@ namespace UI
                 cliente.Email = txtEmail.Text.ToLower();
                 cliente.Telefono = txtTelefono.Text;
                 listaCliente.Add(cliente);
-                
+
                 LimpiarCampos();
                 MessageBox.Show("Cliente agregado con exito");
 
@@ -166,5 +175,7 @@ namespace UI
             }
 
         }
+
+        
     }
 }
