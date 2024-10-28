@@ -140,9 +140,6 @@ namespace UI
             txtModificarStock.Clear();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
