@@ -77,7 +77,7 @@ namespace BLL
         }
         private bool EsTelefonoValido(string telefono)
         {
-            return Regex.IsMatch(telefono, @"^\d{8,}$");
+            return Regex.IsMatch(telefono, @"^\d{10,}$");
         }
 
         

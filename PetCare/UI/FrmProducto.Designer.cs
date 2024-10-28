@@ -361,6 +361,7 @@
             Name = "FrmProducto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmProducto";
+            WindowState = FormWindowState.Maximized;
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
             groupBox3.ResumeLayout(false);
