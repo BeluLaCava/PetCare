@@ -29,9 +29,17 @@
         private void InitializeComponent()
         {
             Clientes = new GroupBox();
+            dataGridView1 = new DataGridView();
             groupBox3 = new GroupBox();
+            btnEliminarCita = new Button();
+            cmbEliminarCita = new ComboBox();
             label10 = new Label();
             groupBox2 = new GroupBox();
+            dtpModificarFecha = new DateTimePicker();
+            label8 = new Label();
+            cmbModificarVeterinario = new ComboBox();
+            label6 = new Label();
+            cmbModificarMascota = new ComboBox();
             label9 = new Label();
             cmbCita = new ComboBox();
             txtModificarHora = new TextBox();
@@ -39,28 +47,20 @@
             label7 = new Label();
             btnModificar = new Button();
             groupBox1 = new GroupBox();
+            label2 = new Label();
+            dtpFecha = new DateTimePicker();
+            label3 = new Label();
+            label1 = new Label();
+            cmbVeterinario = new ComboBox();
+            cmbMascota = new ComboBox();
             txtHora = new TextBox();
             label4 = new Label();
             btnGuardar = new Button();
-            cmbMascota = new ComboBox();
-            cmbVeterinario = new ComboBox();
-            label1 = new Label();
-            label3 = new Label();
-            dtpFecha = new DateTimePicker();
-            label2 = new Label();
-            label6 = new Label();
-            cmbModificarMascota = new ComboBox();
-            label8 = new Label();
-            cmbModificarVeterinario = new ComboBox();
-            dtpModificarFecha = new DateTimePicker();
-            cmbEliminarCita = new ComboBox();
-            btnEliminarCita = new Button();
-            dataGridView1 = new DataGridView();
             Clientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // Clientes
@@ -73,6 +73,17 @@
             Clientes.TabStop = false;
             Clientes.Text = "Citas";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(6, 22);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(586, 524);
+            dataGridView1.TabIndex = 0;
+            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(btnEliminarCita);
@@ -84,6 +95,25 @@
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Cita";
+            // 
+            // btnEliminarCita
+            // 
+            btnEliminarCita.Font = new Font("Segoe UI", 12F);
+            btnEliminarCita.Location = new Point(171, 47);
+            btnEliminarCita.Name = "btnEliminarCita";
+            btnEliminarCita.Size = new Size(139, 44);
+            btnEliminarCita.TabIndex = 24;
+            btnEliminarCita.Text = "Eliminar";
+            btnEliminarCita.UseVisualStyleBackColor = true;
+            // 
+            // cmbEliminarCita
+            // 
+            cmbEliminarCita.Font = new Font("Segoe UI", 12F);
+            cmbEliminarCita.FormattingEnabled = true;
+            cmbEliminarCita.Location = new Point(19, 59);
+            cmbEliminarCita.Name = "cmbEliminarCita";
+            cmbEliminarCita.Size = new Size(146, 29);
+            cmbEliminarCita.TabIndex = 23;
             // 
             // label10
             // 
@@ -114,6 +144,52 @@
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Modificar Cita";
+            // 
+            // dtpModificarFecha
+            // 
+            dtpModificarFecha.Font = new Font("Segoe UI", 12F);
+            dtpModificarFecha.Location = new Point(8, 172);
+            dtpModificarFecha.Name = "dtpModificarFecha";
+            dtpModificarFecha.Size = new Size(200, 29);
+            dtpModificarFecha.TabIndex = 24;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F);
+            label8.Location = new Point(6, 87);
+            label8.Name = "label8";
+            label8.Size = new Size(86, 21);
+            label8.TabIndex = 23;
+            label8.Text = "Veterinario";
+            // 
+            // cmbModificarVeterinario
+            // 
+            cmbModificarVeterinario.Font = new Font("Segoe UI", 12F);
+            cmbModificarVeterinario.FormattingEnabled = true;
+            cmbModificarVeterinario.Location = new Point(6, 113);
+            cmbModificarVeterinario.Name = "cmbModificarVeterinario";
+            cmbModificarVeterinario.Size = new Size(141, 29);
+            cmbModificarVeterinario.TabIndex = 22;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(169, 21);
+            label6.Name = "label6";
+            label6.Size = new Size(68, 21);
+            label6.TabIndex = 21;
+            label6.Text = "Mascota";
+            // 
+            // cmbModificarMascota
+            // 
+            cmbModificarMascota.Font = new Font("Segoe UI", 12F);
+            cmbModificarMascota.FormattingEnabled = true;
+            cmbModificarMascota.Location = new Point(169, 47);
+            cmbModificarMascota.Name = "cmbModificarMascota";
+            cmbModificarMascota.Size = new Size(141, 29);
+            cmbModificarMascota.TabIndex = 20;
             // 
             // label9
             // 
@@ -190,6 +266,62 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Alta Cita";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(8, 153);
+            label2.Name = "label2";
+            label2.Size = new Size(50, 21);
+            label2.TabIndex = 14;
+            label2.Text = "Fecha";
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Font = new Font("Segoe UI", 12F);
+            dtpFecha.Location = new Point(8, 177);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(200, 29);
+            dtpFecha.TabIndex = 13;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(171, 31);
+            label3.Name = "label3";
+            label3.Size = new Size(86, 21);
+            label3.TabIndex = 12;
+            label3.Text = "Veterinario";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(8, 31);
+            label1.Name = "label1";
+            label1.Size = new Size(68, 21);
+            label1.TabIndex = 11;
+            label1.Text = "Mascota";
+            // 
+            // cmbVeterinario
+            // 
+            cmbVeterinario.Font = new Font("Segoe UI", 12F);
+            cmbVeterinario.FormattingEnabled = true;
+            cmbVeterinario.Location = new Point(171, 57);
+            cmbVeterinario.Name = "cmbVeterinario";
+            cmbVeterinario.Size = new Size(141, 29);
+            cmbVeterinario.TabIndex = 10;
+            // 
+            // cmbMascota
+            // 
+            cmbMascota.Font = new Font("Segoe UI", 12F);
+            cmbMascota.FormattingEnabled = true;
+            cmbMascota.Location = new Point(8, 57);
+            cmbMascota.Name = "cmbMascota";
+            cmbMascota.Size = new Size(141, 29);
+            cmbMascota.TabIndex = 9;
+            // 
             // txtHora
             // 
             txtHora.Font = new Font("Segoe UI", 12F);
@@ -218,138 +350,6 @@
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             // 
-            // cmbMascota
-            // 
-            cmbMascota.Font = new Font("Segoe UI", 12F);
-            cmbMascota.FormattingEnabled = true;
-            cmbMascota.Location = new Point(8, 57);
-            cmbMascota.Name = "cmbMascota";
-            cmbMascota.Size = new Size(141, 29);
-            cmbMascota.TabIndex = 9;
-            // 
-            // cmbVeterinario
-            // 
-            cmbVeterinario.Font = new Font("Segoe UI", 12F);
-            cmbVeterinario.FormattingEnabled = true;
-            cmbVeterinario.Location = new Point(171, 57);
-            cmbVeterinario.Name = "cmbVeterinario";
-            cmbVeterinario.Size = new Size(141, 29);
-            cmbVeterinario.TabIndex = 10;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(8, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(68, 21);
-            label1.TabIndex = 11;
-            label1.Text = "Mascota";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(171, 31);
-            label3.Name = "label3";
-            label3.Size = new Size(86, 21);
-            label3.TabIndex = 12;
-            label3.Text = "Veterinario";
-            // 
-            // dtpFecha
-            // 
-            dtpFecha.Font = new Font("Segoe UI", 12F);
-            dtpFecha.Location = new Point(8, 177);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(200, 29);
-            dtpFecha.TabIndex = 13;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(8, 153);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 21);
-            label2.TabIndex = 14;
-            label2.Text = "Fecha";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(169, 21);
-            label6.Name = "label6";
-            label6.Size = new Size(68, 21);
-            label6.TabIndex = 21;
-            label6.Text = "Mascota";
-            // 
-            // cmbModificarMascota
-            // 
-            cmbModificarMascota.Font = new Font("Segoe UI", 12F);
-            cmbModificarMascota.FormattingEnabled = true;
-            cmbModificarMascota.Location = new Point(169, 47);
-            cmbModificarMascota.Name = "cmbModificarMascota";
-            cmbModificarMascota.Size = new Size(141, 29);
-            cmbModificarMascota.TabIndex = 20;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(6, 87);
-            label8.Name = "label8";
-            label8.Size = new Size(86, 21);
-            label8.TabIndex = 23;
-            label8.Text = "Veterinario";
-            // 
-            // cmbModificarVeterinario
-            // 
-            cmbModificarVeterinario.Font = new Font("Segoe UI", 12F);
-            cmbModificarVeterinario.FormattingEnabled = true;
-            cmbModificarVeterinario.Location = new Point(6, 113);
-            cmbModificarVeterinario.Name = "cmbModificarVeterinario";
-            cmbModificarVeterinario.Size = new Size(141, 29);
-            cmbModificarVeterinario.TabIndex = 22;
-            // 
-            // dtpModificarFecha
-            // 
-            dtpModificarFecha.Font = new Font("Segoe UI", 12F);
-            dtpModificarFecha.Location = new Point(8, 172);
-            dtpModificarFecha.Name = "dtpModificarFecha";
-            dtpModificarFecha.Size = new Size(200, 29);
-            dtpModificarFecha.TabIndex = 24;
-            // 
-            // cmbEliminarCita
-            // 
-            cmbEliminarCita.Font = new Font("Segoe UI", 12F);
-            cmbEliminarCita.FormattingEnabled = true;
-            cmbEliminarCita.Location = new Point(19, 59);
-            cmbEliminarCita.Name = "cmbEliminarCita";
-            cmbEliminarCita.Size = new Size(146, 29);
-            cmbEliminarCita.TabIndex = 23;
-            // 
-            // btnEliminarCita
-            // 
-            btnEliminarCita.Font = new Font("Segoe UI", 12F);
-            btnEliminarCita.Location = new Point(171, 47);
-            btnEliminarCita.Name = "btnEliminarCita";
-            btnEliminarCita.Size = new Size(139, 44);
-            btnEliminarCita.TabIndex = 24;
-            btnEliminarCita.Text = "Eliminar";
-            btnEliminarCita.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 22);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(586, 524);
-            dataGridView1.TabIndex = 0;
-            // 
             // FrmCita
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -362,14 +362,15 @@
             Name = "FrmCita";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCita";
+            WindowState = FormWindowState.Maximized;
             Clientes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 

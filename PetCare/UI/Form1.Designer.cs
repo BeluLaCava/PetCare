@@ -38,7 +38,11 @@
             agendarCitaToolStripMenuItem = new ToolStripMenuItem();
             comprarProductoToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
+            lblEmpleadoNombre = new Label();
+            dgvCitasHoy = new DataGridView();
+            lblTitulo = new Label();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCitasHoy).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -46,7 +50,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem, servicioToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(1265, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -95,14 +99,14 @@
             // agendarCitaToolStripMenuItem
             // 
             agendarCitaToolStripMenuItem.Name = "agendarCitaToolStripMenuItem";
-            agendarCitaToolStripMenuItem.Size = new Size(180, 22);
+            agendarCitaToolStripMenuItem.Size = new Size(173, 22);
             agendarCitaToolStripMenuItem.Text = "Agendar Cita";
             agendarCitaToolStripMenuItem.Click += agendarCitaToolStripMenuItem_Click;
             // 
             // comprarProductoToolStripMenuItem
             // 
             comprarProductoToolStripMenuItem.Name = "comprarProductoToolStripMenuItem";
-            comprarProductoToolStripMenuItem.Size = new Size(180, 22);
+            comprarProductoToolStripMenuItem.Size = new Size(173, 22);
             comprarProductoToolStripMenuItem.Text = "Comprar Producto";
             // 
             // salirToolStripMenuItem
@@ -112,20 +116,58 @@
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
+            // lblEmpleadoNombre
+            // 
+            lblEmpleadoNombre.AutoSize = true;
+            lblEmpleadoNombre.Font = new Font("Segoe UI", 15F);
+            lblEmpleadoNombre.Location = new Point(266, 88);
+            lblEmpleadoNombre.Name = "lblEmpleadoNombre";
+            lblEmpleadoNombre.Size = new Size(65, 28);
+            lblEmpleadoNombre.TabIndex = 3;
+            lblEmpleadoNombre.Text = "label1";
+            // 
+            // dgvCitasHoy
+            // 
+            dgvCitasHoy.AllowUserToAddRows = false;
+            dgvCitasHoy.AllowUserToDeleteRows = false;
+            dgvCitasHoy.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCitasHoy.BackgroundColor = SystemColors.ButtonFace;
+            dgvCitasHoy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCitasHoy.Location = new Point(266, 190);
+            dgvCitasHoy.Name = "dgvCitasHoy";
+            dgvCitasHoy.ReadOnly = true;
+            dgvCitasHoy.Size = new Size(889, 415);
+            dgvCitasHoy.TabIndex = 5;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI", 12F);
+            lblTitulo.Location = new Point(266, 142);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(109, 21);
+            lblTitulo.TabIndex = 6;
+            lblTitulo.Text = "Citas para hoy";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1265, 617);
+            Controls.Add(lblTitulo);
+            Controls.Add(dgvCitasHoy);
+            Controls.Add(lblEmpleadoNombre);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "PetCare";
             WindowState = FormWindowState.Maximized;
+            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCitasHoy).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -142,5 +184,8 @@
         private ToolStripMenuItem agendarCitaToolStripMenuItem;
         private ToolStripMenuItem comprarProductoToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
+        private Label lblEmpleadoNombre;
+        private DataGridView dgvCitasHoy;
+        private Label lblTitulo;
     }
 }

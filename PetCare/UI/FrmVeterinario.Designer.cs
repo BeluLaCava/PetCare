@@ -31,9 +31,14 @@
             groupBox4 = new GroupBox();
             dgvVeterinarios = new DataGridView();
             groupBox3 = new GroupBox();
+            btnEliminar = new Button();
             label10 = new Label();
             cmbEliminarVeterinario = new ComboBox();
             groupBox2 = new GroupBox();
+            label7 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
             cmbModificarVeterinario = new ComboBox();
             textBox5 = new TextBox();
             textBox6 = new TextBox();
@@ -47,11 +52,6 @@
             label2 = new Label();
             label1 = new Label();
             btnGuardar = new Button();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            btnEliminar = new Button();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvVeterinarios).BeginInit();
             groupBox3.SuspendLayout();
@@ -92,6 +92,15 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Veterinario";
             // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(173, 29);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(141, 45);
+            btnEliminar.TabIndex = 23;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -128,6 +137,46 @@
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Modificar Veterinario";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F);
+            label7.Location = new Point(8, 21);
+            label7.Name = "label7";
+            label7.Size = new Size(86, 21);
+            label7.TabIndex = 22;
+            label7.Text = "Veterinario";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(10, 87);
+            label4.Name = "label4";
+            label4.Size = new Size(95, 21);
+            label4.TabIndex = 21;
+            label4.Text = "Especialidad";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(173, 87);
+            label5.Name = "label5";
+            label5.Size = new Size(63, 21);
+            label5.TabIndex = 20;
+            label5.Text = "Horario";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(173, 21);
+            label6.Name = "label6";
+            label6.Size = new Size(141, 21);
+            label6.TabIndex = 19;
+            label6.Text = "Apellido y Nombre";
             // 
             // cmbModificarVeterinario
             // 
@@ -252,55 +301,6 @@
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(10, 87);
-            label4.Name = "label4";
-            label4.Size = new Size(95, 21);
-            label4.TabIndex = 21;
-            label4.Text = "Especialidad";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(173, 87);
-            label5.Name = "label5";
-            label5.Size = new Size(63, 21);
-            label5.TabIndex = 20;
-            label5.Text = "Horario";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(173, 21);
-            label6.Name = "label6";
-            label6.Size = new Size(141, 21);
-            label6.TabIndex = 19;
-            label6.Text = "Apellido y Nombre";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(8, 21);
-            label7.Name = "label7";
-            label7.Size = new Size(86, 21);
-            label7.TabIndex = 22;
-            label7.Text = "Veterinario";
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Location = new Point(173, 29);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(141, 45);
-            btnEliminar.TabIndex = 23;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            // 
             // FrmVeterinario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -313,6 +313,7 @@
             Name = "FrmVeterinario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmVeterinario";
+            WindowState = FormWindowState.Maximized;
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvVeterinarios).EndInit();
             groupBox3.ResumeLayout(false);
