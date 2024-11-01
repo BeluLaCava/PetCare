@@ -39,7 +39,7 @@ namespace DAL
             }
 
         }
-        public List<Cliente> ObtenerCita()
+        public List<Cita> ObtenerCita()
         {
             List<Cita> listacitas = new List<Cita>();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
