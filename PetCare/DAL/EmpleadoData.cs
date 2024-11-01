@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Mapper;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -34,15 +35,8 @@ namespace DAL
 
                             if (reader.Read())
                             {
-                                return new Empleado
-                                {
-                                    ID = reader.GetInt32(0),
-                                    Apellido = reader.GetString(1),
-                                    Nombre = reader.GetString(2),
-                                    DNI = reader.GetString(3),
-                                    Email = reader.GetString(4),
-                                    Pass = reader.GetString(5) // Contraseña sin encriptar
-                                };
+                                Empleado empleado = EmpleadoMapper.Map(reader);
+                                return empleado;
                             }
                         }
                     }

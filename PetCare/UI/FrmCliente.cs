@@ -116,6 +116,7 @@ namespace UI
                 int idcliente = seleccionado.ID;
                 clienteBusiness.EliminarCliente(idcliente);
                 MostrarClientes();
+                ObtenerClientes();
                 MessageBox.Show("Cliente eliminado");
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Mapper;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -56,14 +57,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                Cliente cliente = new Cliente();
-                                {
-                                    cliente.ID = reader.GetInt32(0);
-                                    cliente.Nombre = reader.GetString(1);
-                                    cliente.Direccion = reader.GetString(2);
-                                    cliente.Telefono = reader.GetString(3);
-                                    cliente.Email = reader.GetString(4);
-                                }
+                                Cliente cliente = ClienteMapper.Map(reader);
                                 listaCliente.Add(cliente);
                             }
                         }
