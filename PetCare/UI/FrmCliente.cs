@@ -129,25 +129,6 @@ namespace UI
 
         }
 
-        //private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-
-
-        //        txtModificarDireccion.Text = seleccionado.Direccion;
-        //        txtModificarEmail.Text = seleccionado.Email;
-        //        txtModificarTelefono.Text = seleccionado.Telefono;
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        MessageBox.Show(ex.Message);
-        //    }
-
-
-        //}
-
         private void btnBorrador_Click(object sender, EventArgs e)
         {
             try
