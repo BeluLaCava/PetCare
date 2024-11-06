@@ -51,10 +51,6 @@ namespace UI
                 dgvClientes.DataSource = null;
                 dgvClientes.DataSource = listaClientes;
 
-                cmbCliente.DataSource = listaClientes;
-                cmbCliente.DisplayMember = "Nombre";
-                cmbCliente.ValueMember = "ID";
-
             }
             catch (Exception ex)
             {
@@ -77,20 +73,19 @@ namespace UI
 
                 MessageBox.Show(ex.Message);
             }
-            
+
 
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
-                Cliente seleccionado = (Cliente)cmbCliente.SelectedItem;
-                int idcliente = seleccionado.ID;
-
+                int id = Convert.ToInt32(txtIdCliente.Text);
+                string apellido = txtModificarApellido.Text;
                 string direccion = txtModificarDireccion.Text;
                 string email = txtModificarEmail.Text;
                 string telefono = txtModificarTelefono.Text;
-                clienteBusiness.ModificarCliente(idcliente, direccion, email, telefono);
+                clienteBusiness.ModificarCliente(id, apellido, direccion, email, telefono);
                 MostrarClientes();
                 MessageBox.Show("Cliente modificado");
 
@@ -134,24 +129,24 @@ namespace UI
 
         }
 
-        private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                Cliente seleccionado = (Cliente)cmbCliente.SelectedItem;
-
-                txtModificarDireccion.Text = seleccionado.Direccion;
-                txtModificarEmail.Text = seleccionado.Email;
-                txtModificarTelefono.Text = seleccionado.Telefono;
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
+        //private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
 
 
-        }
+        //        txtModificarDireccion.Text = seleccionado.Direccion;
+        //        txtModificarEmail.Text = seleccionado.Email;
+        //        txtModificarTelefono.Text = seleccionado.Telefono;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        MessageBox.Show(ex.Message);
+        //    }
+
+
+        //}
 
         private void btnBorrador_Click(object sender, EventArgs e)
         {
@@ -177,6 +172,31 @@ namespace UI
 
         }
 
-        
+        private void dgvClientes_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvClientes.SelectedRows.Count > 0)
+                {
+                    Cliente clienteSeleccionado = (Cliente)dgvClientes.SelectedRows[0].DataBoundItem;
+                    if(clienteSeleccionado != null)
+                    {
+                        txtIdCliente.Text = clienteSeleccionado.ID.ToString();
+                        txtModificarApellido.Text = clienteSeleccionado.Nombre;
+                        txtModificarDireccion.Text = clienteSeleccionado.Direccion;
+                        txtModificarEmail.Text = clienteSeleccionado.Email;
+                        txtModificarTelefono.Text = clienteSeleccionado.Telefono;
+                    }
+                   
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

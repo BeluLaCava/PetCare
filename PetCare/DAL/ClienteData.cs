@@ -72,7 +72,39 @@ namespace DAL
             }
             return listaCliente;
         }
-        public void ModificarCliente(int idcliente, string direccion, string email, string telefono)
+
+        public Cliente GetById(int id)
+        {
+            try
+            {
+                ;
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString)) 
+                {
+                    conn.Open();
+                    string query = "SELECT ID, nombre, direccion, telefono, email FROM Clientes WHERE ID = @id";
+                    
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                Cliente cliente = ClienteMapper.Map(reader);
+                                return cliente;
+                            }
+                        }    
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+        public void ModificarCliente(Cliente cliente)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
             try
@@ -80,13 +112,14 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE Clientes SET direccion = @direccion, email = @email, telefono = @telefono where ID = @idcliente", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE Clientes SET nombre = @nombre, direccion = @direccion, email = @email, telefono = @telefono where ID = @id", conn);
                     using (cmd)
                     {
-                        cmd.Parameters.AddWithValue("@idcliente", idcliente);
-                        cmd.Parameters.AddWithValue("@direccion", direccion);
-                        cmd.Parameters.AddWithValue("@email", email);
-                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        cmd.Parameters.AddWithValue("@id", cliente.ID);
+                        cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                        cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
+                        cmd.Parameters.AddWithValue("@email", cliente.Email);
+                        cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -97,7 +130,7 @@ namespace DAL
                 throw;
             }
         }
-        public void EliminarCliente(int idcliente)
+        public void EliminarCliente(int id)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
             try
@@ -105,10 +138,10 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("delete from Clientes where ID = @idcliente", conn);
+                    SqlCommand cmd = new SqlCommand("delete from Clientes where ID = @id", conn);
                     using (cmd)
                     {
-                        cmd.Parameters.AddWithValue("@idcliente", idcliente);
+                        cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
                     }
                 }
