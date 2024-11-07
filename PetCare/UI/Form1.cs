@@ -10,12 +10,12 @@ namespace UI
         {
             InitializeComponent();
             empleado = empleadoAutenticado;
-            
+
 
         }
         private void MostrarCitasHoy()
         {
-           
+
         }
         private void OcultarControles()
         {
@@ -39,7 +39,7 @@ namespace UI
                 formVeterinario = new FrmVeterinario
                 {
                     MdiParent = this,
-                   
+
                 };
                 OcultarControles();
 
@@ -49,7 +49,7 @@ namespace UI
             }
             else
             {
-                formVeterinario.BringToFront(); 
+                formVeterinario.BringToFront();
             }
         }
 
@@ -74,7 +74,7 @@ namespace UI
                 // Muestra el formulario y agrega el evento FormClosed
                 formCliente.FormClosed += FormCliente_FormClosed;
                 formCliente.Show();
-                
+
             }
             else
             {
@@ -105,7 +105,7 @@ namespace UI
             }
             else
             {
-                formProducto.BringToFront(); 
+                formProducto.BringToFront();
             }
         }
         private void FrmProducto_FormClosed(object sender, FormClosedEventArgs e)
@@ -132,7 +132,7 @@ namespace UI
             }
             else
             {
-                formMascota.BringToFront(); 
+                formMascota.BringToFront();
             }
         }
         private void FrmMascota_FormClosed(object sender, FormClosedEventArgs e)
@@ -174,6 +174,33 @@ namespace UI
         {
             lblEmpleadoNombre.Text = $"Bienvenido/a, {empleado.Apellido} {empleado.Nombre}";
             MostrarCitasHoy();
+        }
+
+        private void facturarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmFactura formFactura = Application.OpenForms["FrmFactura"] as FrmFactura;
+
+            if (formFactura == null)
+            {
+                formFactura = new FrmFactura
+                {
+                    MdiParent = this,
+
+                };
+                OcultarControles();
+
+                // Muestra el formulario y agrega el evento FormClosed
+                formFactura.FormClosed += FrmCita_FormClosed;
+                formFactura.Show();
+            }
+            else
+            {
+                formFactura.BringToFront();
+            }
+        }
+        private void FrmFactura_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MostrarControles();
         }
     }
 }
