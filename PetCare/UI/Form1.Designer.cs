@@ -41,6 +41,7 @@
             lblEmpleadoNombre = new Label();
             dgvCitasHoy = new DataGridView();
             lblTitulo = new Label();
+            facturarToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCitasHoy).BeginInit();
             SuspendLayout();
@@ -64,34 +65,34 @@
             // agregarVeterinarioToolStripMenuItem
             // 
             agregarVeterinarioToolStripMenuItem.Name = "agregarVeterinarioToolStripMenuItem";
-            agregarVeterinarioToolStripMenuItem.Size = new Size(175, 22);
+            agregarVeterinarioToolStripMenuItem.Size = new Size(180, 22);
             agregarVeterinarioToolStripMenuItem.Text = "Agregar Veterinario";
             agregarVeterinarioToolStripMenuItem.Click += agregarVeterinarioToolStripMenuItem_Click;
             // 
             // agregarClienteToolStripMenuItem
             // 
             agregarClienteToolStripMenuItem.Name = "agregarClienteToolStripMenuItem";
-            agregarClienteToolStripMenuItem.Size = new Size(175, 22);
+            agregarClienteToolStripMenuItem.Size = new Size(180, 22);
             agregarClienteToolStripMenuItem.Text = "Agregar Cliente";
             agregarClienteToolStripMenuItem.Click += agregarClienteToolStripMenuItem_Click_1;
             // 
             // agregarMascotaToolStripMenuItem
             // 
             agregarMascotaToolStripMenuItem.Name = "agregarMascotaToolStripMenuItem";
-            agregarMascotaToolStripMenuItem.Size = new Size(175, 22);
+            agregarMascotaToolStripMenuItem.Size = new Size(180, 22);
             agregarMascotaToolStripMenuItem.Text = "Agregar Mascota";
             agregarMascotaToolStripMenuItem.Click += agregarMascotaToolStripMenuItem_Click;
             // 
             // agregarProductoToolStripMenuItem
             // 
             agregarProductoToolStripMenuItem.Name = "agregarProductoToolStripMenuItem";
-            agregarProductoToolStripMenuItem.Size = new Size(175, 22);
+            agregarProductoToolStripMenuItem.Size = new Size(180, 22);
             agregarProductoToolStripMenuItem.Text = "Agregar Producto";
             agregarProductoToolStripMenuItem.Click += agregarProductoToolStripMenuItem_Click;
             // 
             // servicioToolStripMenuItem
             // 
-            servicioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agendarCitaToolStripMenuItem, comprarProductoToolStripMenuItem });
+            servicioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agendarCitaToolStripMenuItem, comprarProductoToolStripMenuItem, facturarToolStripMenuItem });
             servicioToolStripMenuItem.Name = "servicioToolStripMenuItem";
             servicioToolStripMenuItem.Size = new Size(60, 20);
             servicioToolStripMenuItem.Text = "Servicio";
@@ -99,14 +100,14 @@
             // agendarCitaToolStripMenuItem
             // 
             agendarCitaToolStripMenuItem.Name = "agendarCitaToolStripMenuItem";
-            agendarCitaToolStripMenuItem.Size = new Size(173, 22);
+            agendarCitaToolStripMenuItem.Size = new Size(180, 22);
             agendarCitaToolStripMenuItem.Text = "Agendar Cita";
             agendarCitaToolStripMenuItem.Click += agendarCitaToolStripMenuItem_Click;
             // 
             // comprarProductoToolStripMenuItem
             // 
             comprarProductoToolStripMenuItem.Name = "comprarProductoToolStripMenuItem";
-            comprarProductoToolStripMenuItem.Size = new Size(173, 22);
+            comprarProductoToolStripMenuItem.Size = new Size(180, 22);
             comprarProductoToolStripMenuItem.Text = "Comprar Producto";
             // 
             // salirToolStripMenuItem
@@ -149,6 +150,13 @@
             lblTitulo.TabIndex = 6;
             lblTitulo.Text = "Citas para hoy";
             // 
+            // facturarToolStripMenuItem
+            // 
+            facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
+            facturarToolStripMenuItem.Size = new Size(180, 22);
+            facturarToolStripMenuItem.Text = "Facturar";
+            facturarToolStripMenuItem.Click += facturarToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -187,5 +195,6 @@
         private Label lblEmpleadoNombre;
         private DataGridView dgvCitasHoy;
         private Label lblTitulo;
+        private ToolStripMenuItem facturarToolStripMenuItem;
     }
 }
