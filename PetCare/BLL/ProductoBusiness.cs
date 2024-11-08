@@ -27,6 +27,8 @@ namespace BLL
                 Precio = precio,
                 Stock = stock
             };
+            
+
 
             productos.Add(nuevoProducto);
         }
