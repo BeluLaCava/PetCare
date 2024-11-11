@@ -13,7 +13,7 @@ namespace DAL
     {
         public void GuardarCita(Cita cita)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
 
@@ -42,7 +42,7 @@ namespace DAL
         public List<Cita> ObtenerCita()
         {
             List<Cita> listacitas = new List<Cita>();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)
@@ -80,7 +80,7 @@ namespace DAL
         }
         public void ModificarCita(int id, DateTime fecha, TimeSpan hora, int veterinarioid, int mascotaid)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)
@@ -106,7 +106,7 @@ namespace DAL
         }
         public void EliminarCita(int idcita)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)

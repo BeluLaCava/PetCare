@@ -19,7 +19,7 @@ namespace DAL
         {
             try
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
                 using (conn)
                 {
                     string query = "SELECT * FROM Empleado WHERE EMAIL = @correo";
