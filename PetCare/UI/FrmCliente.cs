@@ -87,6 +87,7 @@ namespace UI
                 string telefono = txtModificarTelefono.Text;
                 clienteBusiness.ModificarCliente(id, apellido, direccion, email, telefono);
                 MostrarClientes();
+                ObtenerClientes();
                 MessageBox.Show("Cliente modificado");
 
             }

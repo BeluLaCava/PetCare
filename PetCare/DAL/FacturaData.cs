@@ -44,7 +44,7 @@ namespace DAL
         public List<Factura> ObtenerFacturas()
         {
             List<Factura> listaFacturas = new List<Factura>();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)
@@ -71,7 +71,7 @@ namespace DAL
 
         public void ModificarFactura(Factura factura)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)

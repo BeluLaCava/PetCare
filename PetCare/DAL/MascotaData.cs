@@ -16,7 +16,7 @@ namespace DAL
       {
          try
          {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             using (conn)
             {
                string query = "SELECT * FROM Mascota WHERE ID = @id";
@@ -50,7 +50,7 @@ namespace DAL
       {
          try
          {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             using (conn)
             {
                string query = "INSERT INTO Mascota (Nombre, Especie, Raza, Fecha_Nacimiento, Cliente_ID) VALUES (@nombre, @especie, @raza, @fechaNacimiento, @clienteId)";
@@ -78,7 +78,7 @@ namespace DAL
          try
          {
             List<Mascota> mascotas = new List<Mascota>();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             using (conn)
             {
                string query = "SELECT * FROM Mascota";
@@ -106,7 +106,7 @@ namespace DAL
       {
          try
          {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             using (conn)
             {
                string query = "UPDATE Mascota SET Nombre = @nombre, Especie = @especie, Raza = @raza, Fecha_Nacimiento = @fechaNacimiento, Cliente_ID = @clienteId WHERE ID = @id";
@@ -134,7 +134,7 @@ namespace DAL
       {
          try
          {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             using (conn)
             {
                string query = "DELETE FROM Mascota WHERE ID = @id";
