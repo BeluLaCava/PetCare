@@ -19,7 +19,7 @@ namespace DAL
             throw new Exception("El cliente seleccionado no existe.");
          }
 
-         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
          {
 
@@ -48,7 +48,7 @@ namespace DAL
 
       public bool ExisteCliente(int clienteID)
       {
-         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
          {
 
@@ -70,7 +70,7 @@ namespace DAL
       public List<Mascota> ObtenerMascotas()
       {
          List<Mascota> listaMascotas = new List<Mascota>();
-         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
          {
 
@@ -108,7 +108,7 @@ namespace DAL
          try
          {
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString))
             {
                conn.Open();
                string query = "SELECT ID, Nombre, Especie, Raza, FechaNacimiento, ClienteID FROM Mascotas WHERE ID = @id";
@@ -135,7 +135,7 @@ namespace DAL
       }
       public void ModificarMascota(Mascota mascota)
       {
-         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
          {
 
@@ -162,7 +162,7 @@ namespace DAL
 
       public void EliminarMascota(int id)
       {
-         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
          {
 
