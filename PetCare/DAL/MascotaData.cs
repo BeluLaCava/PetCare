@@ -22,6 +22,7 @@ namespace DAL
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
          try
          {
+
             using (conn)
             {
                conn.Open();
@@ -50,6 +51,7 @@ namespace DAL
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
          try
          {
+
             using (conn)
             {
                conn.Open();
@@ -71,6 +73,7 @@ namespace DAL
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
          try
          {
+
             using (conn)
             {
                conn.Open();
@@ -104,6 +107,7 @@ namespace DAL
       {
          try
          {
+
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString))
             {
                conn.Open();
@@ -134,6 +138,7 @@ namespace DAL
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
          try
          {
+
             using (conn)
             {
                conn.Open();
@@ -160,6 +165,7 @@ namespace DAL
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
          try
          {
+
             using (conn)
             {
                conn.Open();

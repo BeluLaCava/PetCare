@@ -14,7 +14,7 @@ namespace DAL
     {
         public void GuardarCliente(Cliente cliente)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
 
@@ -43,7 +43,7 @@ namespace DAL
         public List<Cliente> ObtenerCliente ()
         {
             List<Cliente> listaCliente = new List<Cliente>();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)
@@ -78,7 +78,7 @@ namespace DAL
             try
             {
                 ;
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString)) 
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString)) 
                 {
                     conn.Open();
                     string query = "SELECT ID, nombre, direccion, telefono, email FROM Clientes WHERE ID = @id";
@@ -106,7 +106,7 @@ namespace DAL
         }
         public void ModificarCliente(Cliente cliente)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)
@@ -132,7 +132,7 @@ namespace DAL
         }
         public void EliminarCliente(int id)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
                 using (conn)
