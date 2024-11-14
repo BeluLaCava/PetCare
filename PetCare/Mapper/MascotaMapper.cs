@@ -8,21 +8,19 @@ using System.Threading.Tasks;
 
 namespace Mapper
 {
-    public class MascotaMapper
+    public static class MascotaMapper
     {
       public static Mascota Map(SqlDataReader reader)
       {
-         Mascota mascota = new Mascota();
+         return new Mascota
          {
-            mascota.ID = reader.GetInt32(0);
-            mascota.Nombre = reader.GetString(1);
-            mascota.Especie = reader.GetString(2);
-            mascota.Raza = reader.GetString(3);
-            mascota.FechaNacimiento = reader.GetDateTime(4);
-            mascota.ClienteID = reader.GetInt32(5);
+            ID = reader.GetInt32(reader.GetOrdinal("ID")),
+            Nombre = reader.GetString(reader.GetOrdinal("Nombre")),
+            Especie = reader.GetString(reader.GetOrdinal("Especie")),
+            Raza = reader.GetString(reader.GetOrdinal("Raza")),
+            FechaNacimiento = reader.IsDBNull(reader.GetOrdinal("FechaNacimiento")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("FechaNacimiento")),
+            ClienteID = reader.GetInt32(reader.GetOrdinal("ClienteID"))
          };
-
-         return mascota;
       }
 
    }
