@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Mapper;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,6 +12,8 @@ namespace DAL
 {
     public class CitaData
     {
+        private MascotaData mascotaData = new MascotaData();
+        //private VeterinarioData veterinarioData = new VeterinarioData();
         public void GuardarCita(Cita cita)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
@@ -20,8 +23,8 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO Cita (fecha, hora, veterinarioid, mascotaid) 
-                                                    VALUES (@fecha, @hora, @veterinarioid, @mascotaid)", conn);
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO Cita (fecha, hora, veterinario_id, mascota_id) 
+                                                    VALUES (fecha, hora, @veterinarioid, @mascotaid)", conn);
                     using (cmd)
                     {
                         cmd.Parameters.AddWithValue("@fecha", cita.Fecha);
@@ -56,29 +59,26 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                Cita cita = new Cita();
-                                {
-                                    cita.ID = reader.GetInt32(0);
-                                    cita.Fecha = reader.GetDateTime(1);
-                                    cita.Hora = reader.GetTimeSpan(2);
-                                    cita.VeterinarioID = reader.GetInt32(3);
-                                    cita.MascotaID = reader.GetInt32(4);
-                                }
-                                listacitas.Add(cita);
+                                int idMascota = Convert.ToInt32(reader["mascota_id"].ToString());
+                                Mascota mascota = mascotaData.GetById(idMascota);
+                                int idVeterinario = Convert.ToInt32(reader["veterinario_id"].ToString());
+                                //Veterinario veterinario = veterinarioData.GetById(idVeterinario);
+                                //Cita cita = CitaMapper.Map(reader, mascota, veterinario);
+                                //listacitas.Add(cita);
                             }
                         }
 
                     }
                 }
+                return listacitas;
             }
             catch (Exception ex)
             {
 
                 throw;
             }
-            return listacitas;
         }
-        public void ModificarCita(int id, DateTime fecha, TimeSpan hora, int veterinarioid, int mascotaid)
+        public void ModificarCita(Cita cita)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
@@ -89,11 +89,11 @@ namespace DAL
                     SqlCommand cmd = new SqlCommand("UPDATE Cita SET fecha = @fecha, Hora = @hora, Veterinarioid = @veterinarioid, Mascotaid = @mascotaid where ID = @idcita", conn);
                     using (cmd)
                     {
-                        cmd.Parameters.AddWithValue("@idcita", id);
-                        cmd.Parameters.AddWithValue("@fecha", fecha);
-                        cmd.Parameters.AddWithValue("@hora", hora);
-                        cmd.Parameters.AddWithValue("@veterinarioid", veterinarioid);
-                        cmd.Parameters.AddWithValue("@mascotaid", mascotaid);
+                        cmd.Parameters.AddWithValue("@idcita", cita.ID);
+                        cmd.Parameters.AddWithValue("@fecha", cita.Fecha);
+                        cmd.Parameters.AddWithValue("@hora", cita.Hora);
+                        cmd.Parameters.AddWithValue("@veterinarioid", cita.VeterinarioID);
+                        cmd.Parameters.AddWithValue("@mascotaid", cita.MascotaID);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -104,7 +104,7 @@ namespace DAL
                 throw;
             }
         }
-        public void EliminarCita(int idcita)
+        public void EliminarCita(int idEliminar)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
@@ -115,7 +115,7 @@ namespace DAL
                     SqlCommand cmd = new SqlCommand("delete from Cita where ID = @idcita", conn);
                     using (cmd)
                     {
-                        cmd.Parameters.AddWithValue("@idcita", idcita);
+                        cmd.Parameters.AddWithValue("@idcita", idEliminar);
                         cmd.ExecuteNonQuery();
                     }
                 }
