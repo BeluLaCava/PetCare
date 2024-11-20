@@ -40,9 +40,9 @@
             label5 = new Label();
             label6 = new Label();
             cmbModificarVeterinario = new ComboBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox8 = new TextBox();
+            txthora = new TextBox();
+            txtModificarNombre = new TextBox();
+            txtespe = new TextBox();
             btnModificar = new Button();
             groupBox1 = new GroupBox();
             txtEspecialidad = new TextBox();
@@ -127,9 +127,9 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(cmbModificarVeterinario);
-            groupBox2.Controls.Add(textBox5);
-            groupBox2.Controls.Add(textBox6);
-            groupBox2.Controls.Add(textBox8);
+            groupBox2.Controls.Add(txthora);
+            groupBox2.Controls.Add(txtModificarNombre);
+            groupBox2.Controls.Add(txtespe);
             groupBox2.Controls.Add(btnModificar);
             groupBox2.Location = new Point(12, 203);
             groupBox2.Name = "groupBox2";
@@ -187,29 +187,29 @@
             cmbModificarVeterinario.Size = new Size(143, 29);
             cmbModificarVeterinario.TabIndex = 18;
             // 
-            // textBox5
+            // txthora
             // 
-            textBox5.Font = new Font("Segoe UI", 12F);
-            textBox5.Location = new Point(171, 114);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(143, 29);
-            textBox5.TabIndex = 17;
+            txthora.Font = new Font("Segoe UI", 12F);
+            txthora.Location = new Point(171, 114);
+            txthora.Name = "txthora";
+            txthora.Size = new Size(143, 29);
+            txthora.TabIndex = 17;
             // 
-            // textBox6
+            // txtModificarNombre
             // 
-            textBox6.Font = new Font("Segoe UI", 12F);
-            textBox6.Location = new Point(171, 45);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(143, 29);
-            textBox6.TabIndex = 16;
+            txtModificarNombre.Font = new Font("Segoe UI", 12F);
+            txtModificarNombre.Location = new Point(171, 45);
+            txtModificarNombre.Name = "txtModificarNombre";
+            txtModificarNombre.Size = new Size(143, 29);
+            txtModificarNombre.TabIndex = 16;
             // 
-            // textBox8
+            // txtespe
             // 
-            textBox8.Font = new Font("Segoe UI", 12F);
-            textBox8.Location = new Point(8, 111);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(143, 29);
-            textBox8.TabIndex = 14;
+            txtespe.Font = new Font("Segoe UI", 12F);
+            txtespe.Location = new Point(8, 111);
+            txtespe.Name = "txtespe";
+            txtespe.Size = new Size(143, 29);
+            txtespe.TabIndex = 14;
             // 
             // btnModificar
             // 
@@ -220,6 +220,7 @@
             btnModificar.TabIndex = 9;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // groupBox1
             // 
@@ -300,6 +301,7 @@
             btnGuardar.TabIndex = 0;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // FrmVeterinario
             // 
@@ -336,9 +338,9 @@
         private GroupBox groupBox2;
         private Label label9;
         private ComboBox cmbModificarVeterinario;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox8;
+        private TextBox txthora;
+        private TextBox txtModificarNombre;
+        private TextBox txtespe;
         private Label label8;
         private Button btnModificar;
         private GroupBox groupBox1;
