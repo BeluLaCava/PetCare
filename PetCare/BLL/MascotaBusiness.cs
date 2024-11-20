@@ -13,7 +13,19 @@ namespace BLL
     {
       private MascotaData mascotaData = new MascotaData();
 
-      public void AgregarMascota(Mascota mascota)
+      public List<Mascota> ObtenerMascotas()
+      {
+         try
+         {
+            return mascotaData.ObtenerMascotas();
+         }
+         catch (Exception ex)
+         {
+            throw;
+         }
+      }
+
+      public void GuardarMascota(Mascota mascota)
       {
          try
          {
@@ -21,105 +33,102 @@ namespace BLL
             {
                if (string.IsNullOrEmpty(mascota.Nombre))
                {
-                  throw new Exception("El nombre de la mascota es obligatorio.");
+                  throw new Exception("El nombre de la mascota no puede estar vacío.");
                }
 
                if (string.IsNullOrEmpty(mascota.Especie))
                {
-                  throw new Exception("La especie de la mascota es obligatoria.");
+                  throw new Exception("La especie de la mascota no puede estar vacía.");
                }
 
-               if (string.IsNullOrEmpty(mascota.Raza))
-               {
-                  throw new Exception("La raza de la mascota es obligatoria.");
-               }
 
-               mascotaData.AgregarMascota(mascota);
+               mascotaData.GuardarMascota(mascota);
                trx.Complete();
             }
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al guardar la mascota: " + ex.Message);
+            throw;
          }
       }
 
-      public void ActualizarMascota(int ID, string nombre, string especie, string raza, DateTime? fecha_nacimiento, int cliente_id)
+      public Mascota GetById(int id)
+      {
+         try
+         {
+            return mascotaData.GetById(id);
+         }
+         catch (Exception ex)
+         {
+            throw;
+         }
+      }
+
+      public void ModificarMascota(int idMascota, Mascota nuevaMascota)
       {
          try
          {
             using (TransactionScope trx = new TransactionScope())
             {
-               Mascota mascota = mascotaData.ObtenerMascotaPorID(ID);
-               if (mascota == null)
+               Mascota mascotaExistente = mascotaData.GetById(idMascota);
+               if (mascotaExistente == null)
                {
-                  throw new Exception("La mascota no existe.");
+                  throw new Exception("Mascota inexistente.");
                }
+               mascotaExistente.Nombre = nuevaMascota.Nombre;
+               mascotaExistente.Especie = nuevaMascota.Especie;
+               mascotaExistente.Raza = nuevaMascota.Raza;
+               mascotaExistente.FechaNacimiento = nuevaMascota.FechaNacimiento;
 
-               if (string.IsNullOrEmpty(nombre))
-               {
-                  throw new Exception("El nombre de la mascota es obligatorio.");
-               }
-
-               if (string.IsNullOrEmpty(especie))
-               {
-                  throw new Exception("La especie de la mascota es obligatoria.");
-               }
-
-               if (string.IsNullOrEmpty(raza))
-               {
-                  throw new Exception("La raza de la mascota es obligatoria.");
-               }
-
-               mascota.Nombre = nombre;
-               mascota.Especie = especie;
-               mascota.Raza = raza;
-               mascota.FechaNacimiento = fecha_nacimiento;
-               mascota.ClienteID = cliente_id;
-
-               mascotaData.ActualizarMascota(mascota);
+               mascotaData.ModificarMascota(mascotaExistente);
                trx.Complete();
             }
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al modificar la mascota: " + ex.Message);
+            throw;
          }
       }
 
-      public void EliminarMascota(int id)
+      public void EliminarMascota(int idMascota)
       {
          try
          {
             using (TransactionScope trx = new TransactionScope())
             {
-               Mascota mascota = mascotaData.ObtenerMascotaPorID(id);
+               Mascota mascota = mascotaData.GetById(idMascota);
                if (mascota == null)
                {
-                  throw new Exception("La mascota no existe.");
+                  throw new Exception("Mascota inexistente.");
                }
 
-               mascotaData.EliminarMascota(id);
+               mascotaData.EliminarMascota(idMascota);
                trx.Complete();
             }
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al eliminar la mascota: " + ex.Message);
+            throw;
          }
       }
 
-      public List<Mascota> ObtenerMascotas()
+      public void GuardarMascotasMultiples(List<Mascota> mascotas)
       {
          try
          {
-            return mascotaData.ObtenerTodasLasMascotas();
+            using (TransactionScope trx = new TransactionScope())
+            {
+               foreach (var mascota in mascotas)
+               {
+                  GuardarMascota(mascota);
+               }
+               trx.Complete();
+            }
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al obtener la lista de mascotas: " + ex.Message);
+            throw;
          }
       }
-
    }
 }

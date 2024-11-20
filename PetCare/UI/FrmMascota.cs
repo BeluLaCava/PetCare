@@ -14,121 +14,83 @@ namespace UI
 {
    public partial class FrmMascota : Form
    {
-      private MascotaBusiness mascotaBusiness = new MascotaBusiness();
+      private MascotaBusiness mascotaBusiness;
       public FrmMascota()
       {
          InitializeComponent();
+         mascotaBusiness = new MascotaBusiness();
          CargarMascotas();
       }
-
       private void CargarMascotas()
       {
-         try
-         {
-            List<Mascota> mascotas = mascotaBusiness.ObtenerMascotas();
-
-            cmbMascota.DataSource = mascotas;
-            cmbMascota.DisplayMember = "Nombre";
-            cmbMascota.ValueMember = "ID";
-
-            cmbEliminar.DataSource = new List<Mascota>(mascotas);
-            cmbEliminar.DisplayMember = "Nombre";
-            cmbEliminar.ValueMember = "ID";
-         }
-         catch (Exception ex)
-         {
-            MessageBox.Show("Error al cargar la lista de mascotas: " + ex.Message);
-         }
+         List<Mascota> mascotas = mascotaBusiness.ObtenerMascotas();
+         cmbMascota.DataSource = mascotas;
+         cmbMascota.DisplayMember = "Nombre";
+         cmbMascota.ValueMember = "ID";
       }
 
       private void btnGuardar_Click(object sender, EventArgs e)
       {
          try
          {
-
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtRaza.Text) || string.IsNullOrEmpty(txtEspecie.Text))
-            {
-               MessageBox.Show("Por favor, complete todos los campos.");
-               return;
-            }
-
-            Mascota nuevaMascota = new Mascota
+            Mascota mascota = new Mascota
             {
                Nombre = txtNombre.Text,
-               Raza = txtRaza.Text,
                Especie = txtEspecie.Text,
-               FechaNacimiento = dtpFecha.Value
+               Raza = txtRaza.Text,
+               FechaNacimiento = dtpFecha.Value,
+
+               ClienteID = 1
             };
 
-            mascotaBusiness.AgregarMascota(nuevaMascota);
+            MascotaBusiness business = new MascotaBusiness();
+            business.GuardarMascota(mascota);
 
-            MessageBox.Show("Mascota guardada exitosamente.");
-            CargarMascotas();
-            LimpiarCampos();
+            MessageBox.Show("Mascota guardada correctamente.");
          }
          catch (Exception ex)
          {
-            MessageBox.Show("Error al guardar la mascota: " + ex.Message);
+            MessageBox.Show("Error al guardar mascota: " + ex.Message);
          }
-
       }
 
       private void btnModificar_Click(object sender, EventArgs e)
       {
          try
          {
-            if (cmbMascota.SelectedIndex == -1)
+            Mascota mascota = new Mascota
             {
-               MessageBox.Show("Por favor, seleccione una mascota para modificar.");
-               return;
-            }
-
-            int idMascota = Convert.ToInt32(cmbMascota.SelectedValue);
-
-            Mascota mascotaModificada = new Mascota
-            {
-               ID = idMascota,
-               Nombre = txtModificarNombre.Text,
-               Raza = txtModificarRaza.Text,
-               Especie = txtModificarEspecie.Text,
-               FechaNacimiento = dtpModificarFecha.Value
+               ID = Convert.ToInt32(cmbMascota.SelectedValue), 
+               Nombre = txtModificarNombre.Text, 
+               Especie = txtModificarEspecie.Text, 
+               Raza = txtModificarRaza.Text, 
+               FechaNacimiento = dtpModificarFecha.Value 
             };
 
-            mascotaBusiness.ActualizarMascota(mascotaModificada.ID, mascotaModificada.Nombre, mascotaModificada.Especie, mascotaModificada.Raza, mascotaModificada.FechaNacimiento, mascotaModificada.ClienteID);
 
-            MessageBox.Show("Mascota modificada exitosamente.");
-            CargarMascotas();
-
-            LimpiarCamposModificar();
+            MascotaBusiness business = new MascotaBusiness();
+            business.ModificarMascota(mascota.ID, mascota);
+            MessageBox.Show("Mascota modificada correctamente");
          }
          catch (Exception ex)
-         {
-            MessageBox.Show("Error al modificar la mascota: " + ex.Message);
+         {    
+            MessageBox.Show("Error al modificar mascota: " + ex.Message);
          }
-
       }
 
       private void btnEliminar_Click(object sender, EventArgs e)
       {
          try
          {
-
-            if (cmbEliminar.SelectedIndex == -1)
-            {
-               MessageBox.Show("Por favor, seleccione una mascota para eliminar.");
-               return;
-            }
-
-            int idMascota = Convert.ToInt32(cmbEliminar.SelectedValue);
-
-            mascotaBusiness.EliminarMascota(idMascota);
-
-            MessageBox.Show("Mascota eliminada exitosamente.");
+            int id = Convert.ToInt32(cmbEliminar.SelectedValue);
+            MascotaBusiness business = new MascotaBusiness();
+            business.EliminarMascota(id);
             CargarMascotas();
+            MessageBox.Show("Mascota eliminada correctamente");
          }
          catch (Exception ex)
          {
-            MessageBox.Show("Error al eliminar la mascota: " + ex.Message);
+            MessageBox.Show("Error al eliminar mascota: " + ex.Message);
          }
       }
       private void LimpiarCampos()
