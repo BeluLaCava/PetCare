@@ -29,35 +29,36 @@
         private void InitializeComponent()
         {
             Clientes = new GroupBox();
-            dataGridView1 = new DataGridView();
+            dgvCitas = new DataGridView();
             groupBox3 = new GroupBox();
+            txtEliminarCita = new TextBox();
             btnEliminarCita = new Button();
-            cmbEliminarCita = new ComboBox();
             label10 = new Label();
             groupBox2 = new GroupBox();
+            txtCita = new TextBox();
             dtpModificarFecha = new DateTimePicker();
             label8 = new Label();
             cmbModificarVeterinario = new ComboBox();
             label6 = new Label();
             cmbModificarMascota = new ComboBox();
             label9 = new Label();
-            cmbCita = new ComboBox();
-            txtModificarHora = new TextBox();
             label5 = new Label();
             label7 = new Label();
             btnModificar = new Button();
             groupBox1 = new GroupBox();
-            label2 = new Label();
+            dtpHora = new DateTimePicker();
             dtpFecha = new DateTimePicker();
+            label2 = new Label();
             label3 = new Label();
             label1 = new Label();
             cmbVeterinario = new ComboBox();
             cmbMascota = new ComboBox();
-            txtHora = new TextBox();
             label4 = new Label();
             btnGuardar = new Button();
+            btnSalir = new Button();
+            dtpModificarHora = new DateTimePicker();
             Clientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCitas).BeginInit();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -65,36 +66,47 @@
             // 
             // Clientes
             // 
-            Clientes.Controls.Add(dataGridView1);
-            Clientes.Location = new Point(362, 12);
+            Clientes.Controls.Add(dgvCitas);
+            Clientes.Location = new Point(409, 12);
             Clientes.Name = "Clientes";
-            Clientes.Size = new Size(598, 552);
+            Clientes.Size = new Size(816, 497);
             Clientes.TabIndex = 9;
             Clientes.TabStop = false;
             Clientes.Text = "Citas";
             // 
-            // dataGridView1
+            // dgvCitas
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 22);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(586, 524);
-            dataGridView1.TabIndex = 0;
+            dgvCitas.AllowUserToAddRows = false;
+            dgvCitas.AllowUserToDeleteRows = false;
+            dgvCitas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCitas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCitas.Location = new Point(6, 22);
+            dgvCitas.MultiSelect = false;
+            dgvCitas.Name = "dgvCitas";
+            dgvCitas.ReadOnly = true;
+            dgvCitas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCitas.Size = new Size(804, 469);
+            dgvCitas.TabIndex = 0;
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(txtEliminarCita);
             groupBox3.Controls.Add(btnEliminarCita);
-            groupBox3.Controls.Add(cmbEliminarCita);
             groupBox3.Controls.Add(label10);
-            groupBox3.Location = new Point(12, 521);
+            groupBox3.Location = new Point(409, 537);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(328, 109);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Cita";
+            // 
+            // txtEliminarCita
+            // 
+            txtEliminarCita.Font = new Font("Segoe UI", 12F);
+            txtEliminarCita.Location = new Point(19, 56);
+            txtEliminarCita.Name = "txtEliminarCita";
+            txtEliminarCita.Size = new Size(143, 29);
+            txtEliminarCita.TabIndex = 26;
             // 
             // btnEliminarCita
             // 
@@ -105,15 +117,7 @@
             btnEliminarCita.TabIndex = 24;
             btnEliminarCita.Text = "Eliminar";
             btnEliminarCita.UseVisualStyleBackColor = true;
-            // 
-            // cmbEliminarCita
-            // 
-            cmbEliminarCita.Font = new Font("Segoe UI", 12F);
-            cmbEliminarCita.FormattingEnabled = true;
-            cmbEliminarCita.Location = new Point(19, 59);
-            cmbEliminarCita.Name = "cmbEliminarCita";
-            cmbEliminarCita.Size = new Size(146, 29);
-            cmbEliminarCita.TabIndex = 23;
+            btnEliminarCita.Click += btnEliminarCita_Click;
             // 
             // label10
             // 
@@ -127,37 +131,45 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(dtpModificarHora);
+            groupBox2.Controls.Add(txtCita);
             groupBox2.Controls.Add(dtpModificarFecha);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(cmbModificarVeterinario);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(cmbModificarMascota);
             groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(cmbCita);
-            groupBox2.Controls.Add(txtModificarHora);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(btnModificar);
-            groupBox2.Location = new Point(12, 254);
+            groupBox2.Location = new Point(12, 305);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(328, 261);
+            groupBox2.Size = new Size(373, 317);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Modificar Cita";
             // 
+            // txtCita
+            // 
+            txtCita.Font = new Font("Segoe UI", 12F);
+            txtCita.Location = new Point(101, 29);
+            txtCita.Name = "txtCita";
+            txtCita.Size = new Size(198, 29);
+            txtCita.TabIndex = 25;
+            // 
             // dtpModificarFecha
             // 
             dtpModificarFecha.Font = new Font("Segoe UI", 12F);
-            dtpModificarFecha.Location = new Point(8, 172);
+            dtpModificarFecha.Location = new Point(101, 202);
             dtpModificarFecha.Name = "dtpModificarFecha";
-            dtpModificarFecha.Size = new Size(200, 29);
+            dtpModificarFecha.Size = new Size(198, 29);
             dtpModificarFecha.TabIndex = 24;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(6, 87);
+            label8.Location = new Point(8, 120);
             label8.Name = "label8";
             label8.Size = new Size(86, 21);
             label8.TabIndex = 23;
@@ -167,16 +179,16 @@
             // 
             cmbModificarVeterinario.Font = new Font("Segoe UI", 12F);
             cmbModificarVeterinario.FormattingEnabled = true;
-            cmbModificarVeterinario.Location = new Point(6, 113);
+            cmbModificarVeterinario.Location = new Point(101, 117);
             cmbModificarVeterinario.Name = "cmbModificarVeterinario";
-            cmbModificarVeterinario.Size = new Size(141, 29);
+            cmbModificarVeterinario.Size = new Size(198, 29);
             cmbModificarVeterinario.TabIndex = 22;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(169, 21);
+            label6.Location = new Point(8, 83);
             label6.Name = "label6";
             label6.Size = new Size(68, 21);
             label6.TabIndex = 21;
@@ -186,43 +198,26 @@
             // 
             cmbModificarMascota.Font = new Font("Segoe UI", 12F);
             cmbModificarMascota.FormattingEnabled = true;
-            cmbModificarMascota.Location = new Point(169, 47);
+            cmbModificarMascota.Location = new Point(101, 75);
             cmbModificarMascota.Name = "cmbModificarMascota";
-            cmbModificarMascota.Size = new Size(141, 29);
+            cmbModificarMascota.Size = new Size(198, 29);
             cmbModificarMascota.TabIndex = 20;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F);
-            label9.Location = new Point(8, 21);
+            label9.Location = new Point(6, 32);
             label9.Name = "label9";
             label9.Size = new Size(37, 21);
             label9.TabIndex = 19;
             label9.Text = "Cita";
             // 
-            // cmbCita
-            // 
-            cmbCita.Font = new Font("Segoe UI", 12F);
-            cmbCita.FormattingEnabled = true;
-            cmbCita.Location = new Point(8, 45);
-            cmbCita.Name = "cmbCita";
-            cmbCita.Size = new Size(143, 29);
-            cmbCita.TabIndex = 18;
-            // 
-            // txtModificarHora
-            // 
-            txtModificarHora.Font = new Font("Segoe UI", 12F);
-            txtModificarHora.Location = new Point(171, 111);
-            txtModificarHora.Name = "txtModificarHora";
-            txtModificarHora.Size = new Size(143, 29);
-            txtModificarHora.TabIndex = 17;
-            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(171, 87);
+            label5.Location = new Point(8, 158);
             label5.Name = "label5";
             label5.Size = new Size(44, 21);
             label5.TabIndex = 13;
@@ -232,63 +227,75 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(8, 148);
+            label7.Location = new Point(8, 210);
             label7.Name = "label7";
-            label7.Size = new Size(48, 21);
+            label7.Size = new Size(50, 21);
             label7.TabIndex = 11;
-            label7.Text = "Email";
+            label7.Text = "Fecha";
             // 
             // btnModificar
             // 
             btnModificar.Font = new Font("Segoe UI", 12F);
-            btnModificar.Location = new Point(171, 213);
+            btnModificar.Location = new Point(214, 250);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(143, 42);
             btnModificar.TabIndex = 9;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(dtpHora);
             groupBox1.Controls.Add(dtpFecha);
+            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(cmbVeterinario);
             groupBox1.Controls.Add(cmbMascota);
-            groupBox1.Controls.Add(txtHora);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnGuardar);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(328, 236);
+            groupBox1.Size = new Size(373, 274);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Alta Cita";
+            // 
+            // dtpHora
+            // 
+            dtpHora.CustomFormat = "dd/MM/yyyy HH:mm";
+            dtpHora.Font = new Font("Segoe UI", 12F);
+            dtpHora.Format = DateTimePickerFormat.Time;
+            dtpHora.Location = new Point(101, 109);
+            dtpHora.MinDate = new DateTime(2024, 11, 18, 0, 0, 0, 0);
+            dtpHora.Name = "dtpHora";
+            dtpHora.Size = new Size(198, 29);
+            dtpHora.TabIndex = 18;
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Font = new Font("Segoe UI", 12F);
+            dtpFecha.Location = new Point(101, 151);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(198, 29);
+            dtpFecha.TabIndex = 17;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(8, 153);
+            label2.Location = new Point(8, 157);
             label2.Name = "label2";
             label2.Size = new Size(50, 21);
             label2.TabIndex = 14;
             label2.Text = "Fecha";
             // 
-            // dtpFecha
-            // 
-            dtpFecha.Font = new Font("Segoe UI", 12F);
-            dtpFecha.Location = new Point(8, 177);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(200, 29);
-            dtpFecha.TabIndex = 13;
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(171, 31);
+            label3.Location = new Point(6, 69);
             label3.Name = "label3";
             label3.Size = new Size(86, 21);
             label3.TabIndex = 12;
@@ -298,7 +305,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(8, 31);
+            label1.Location = new Point(8, 22);
             label1.Name = "label1";
             label1.Size = new Size(68, 21);
             label1.TabIndex = 11;
@@ -308,33 +315,25 @@
             // 
             cmbVeterinario.Font = new Font("Segoe UI", 12F);
             cmbVeterinario.FormattingEnabled = true;
-            cmbVeterinario.Location = new Point(171, 57);
+            cmbVeterinario.Location = new Point(101, 66);
             cmbVeterinario.Name = "cmbVeterinario";
-            cmbVeterinario.Size = new Size(141, 29);
+            cmbVeterinario.Size = new Size(198, 29);
             cmbVeterinario.TabIndex = 10;
             // 
             // cmbMascota
             // 
             cmbMascota.Font = new Font("Segoe UI", 12F);
             cmbMascota.FormattingEnabled = true;
-            cmbMascota.Location = new Point(8, 57);
+            cmbMascota.Location = new Point(101, 19);
             cmbMascota.Name = "cmbMascota";
-            cmbMascota.Size = new Size(141, 29);
+            cmbMascota.Size = new Size(198, 29);
             cmbMascota.TabIndex = 9;
-            // 
-            // txtHora
-            // 
-            txtHora.Font = new Font("Segoe UI", 12F);
-            txtHora.Location = new Point(8, 113);
-            txtHora.Name = "txtHora";
-            txtHora.Size = new Size(143, 29);
-            txtHora.TabIndex = 8;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(8, 89);
+            label4.Location = new Point(8, 109);
             label4.Name = "label4";
             label4.Size = new Size(44, 21);
             label4.TabIndex = 4;
@@ -343,7 +342,7 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Segoe UI", 12F);
-            btnGuardar.Location = new Point(169, 105);
+            btnGuardar.Location = new Point(214, 211);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(143, 42);
             btnGuardar.TabIndex = 0;
@@ -351,21 +350,45 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // btnSalir
+            // 
+            btnSalir.Font = new Font("Segoe UI", 12F);
+            btnSalir.Location = new Point(763, 584);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(139, 44);
+            btnSalir.TabIndex = 27;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // dtpModificarHora
+            // 
+            dtpModificarHora.CustomFormat = "dd/MM/yyyy HH:mm";
+            dtpModificarHora.Font = new Font("Segoe UI", 12F);
+            dtpModificarHora.Format = DateTimePickerFormat.Time;
+            dtpModificarHora.Location = new Point(101, 156);
+            dtpModificarHora.MinDate = new DateTime(2024, 11, 18, 0, 0, 0, 0);
+            dtpModificarHora.Name = "dtpModificarHora";
+            dtpModificarHora.Size = new Size(198, 29);
+            dtpModificarHora.TabIndex = 19;
+            // 
             // FrmCita
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(969, 639);
+            ClientSize = new Size(1295, 685);
+            Controls.Add(btnSalir);
             Controls.Add(Clientes);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FrmCita";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmCita";
+            Text = "Cita";
             WindowState = FormWindowState.Maximized;
+            Load += FrmCita_Load;
             Clientes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCitas).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -385,15 +408,12 @@
         private Button button3;
         private GroupBox groupBox2;
         private Label label9;
-        private ComboBox cmbCita;
-        private TextBox txtModificarHora;
         private TextBox txtModificarEmail;
         private Label label5;
         private Label label7;
         private Button btnModificar;
         private GroupBox groupBox1;
         private Label label2;
-        private DateTimePicker dtpFecha;
         private Label label3;
         private Label label1;
         private ComboBox cmbVeterinario;
@@ -407,7 +427,12 @@
         private ComboBox cmbModificarMascota;
         private DateTimePicker dtpModificarFecha;
         private Button btnEliminarCita;
-        private ComboBox cmbEliminarCita;
-        private DataGridView dataGridView1;
+        private DataGridView dgvCitas;
+        private TextBox txtEliminarCita;
+        private TextBox txtCita;
+        private DateTimePicker dtpFecha;
+        private Button btnSalir;
+        private DateTimePicker dtpHora;
+        private DateTimePicker dtpModificarHora;
     }
 }

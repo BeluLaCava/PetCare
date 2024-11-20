@@ -12,41 +12,17 @@ namespace BLL
 {
     public class CitaBusiness
     {
-        private CitaData citadata = new CitaData();
+        private CitaData citaData = new CitaData();
 
         public void GuardarCita(Cita cita)
         {
             try
             {
-                using (var trx = new TransactionScope())
+                using (TransactionScope trx = new TransactionScope())
                 {
+                    Validacion(cita);
 
-
-                    if (cita.MascotaID <= 0)
-                    {
-                        throw new Exception("Ingrese una mascota para atender");
-                    }
-
-                    if (cita.VeterinarioID <= 0)
-                    {
-                        throw new Exception("Ingrese un veterinario para atender a su mascota");
-                    }
-                    if (cita.Fecha <= DateTime.Today)
-                    {
-                        throw new Exception("La fecha ingresada no es valida");
-                    }
-
-
-                    TimeSpan horaApertura = new TimeSpan(7, 0, 0);  
-                    TimeSpan horaCierre = new TimeSpan(19, 0, 0);   
-
-
-                    if (cita.Hora < horaApertura || cita.Hora > horaCierre)
-                    {
-                        throw new Exception("\"La hora ingresada no es válida. Debe estar entre 07:00 y 19:00.");
-                    }
-
-                    citadata.GuardarCita(cita);
+                    citaData.GuardarCita(cita);
                     trx.Complete();
                 }
             }
@@ -57,37 +33,54 @@ namespace BLL
             }
 
         }
-       
-        public void ModificarCliente(int id, DateTime fecha, TimeSpan hora, int veterinarioid, int mascotaid)
+
+        private static void Validacion(Cita cita)
+        {
+            if (cita.MascotaID == null)
+            {
+                throw new Exception("Ingrese una mascota para atender");
+            }
+
+            if (cita.VeterinarioID == null)
+            {
+                throw new Exception("Ingrese un veterinario para atender a su mascota");
+            }
+            if (cita.Fecha <= DateTime.Today)
+            {
+                throw new Exception("La fecha ingresada no es valida");
+            }
+
+
+            TimeSpan horaApertura = new TimeSpan(7, 0, 0);
+            TimeSpan horaCierre = new TimeSpan(19, 0, 0);
+
+
+            if (cita.Hora < horaApertura || cita.Hora > horaCierre)
+            {
+                throw new Exception("\"La hora ingresada no es válida. Debe estar entre 07:00 y 19:00.");
+            }
+        }
+
+        public List<Cita> ObtenerCitas()
         {
             try
             {
-                using (var trx = new TransactionScope())
+               return citaData.ObtenerCita();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+        public void ModificarCita(Cita cita)
+        {
+            try
+            {
+                using (TransactionScope trx = new TransactionScope())
                 {
-                    if (mascotaid <= 0)
-                    {
-                        throw new Exception("Ingrese una mascota para atender");
-                    }
-
-                    if (veterinarioid <= 0)
-                    {
-                        throw new Exception("Ingrese un veterinario para atender a su mascota");
-                    }
-                    if (fecha <= DateTime.Today)
-                    {
-                        throw new Exception("La fecha ingresada no es valida");
-                    }
-
-
-                    TimeSpan horaApertura = new TimeSpan(7, 0, 0);
-                    TimeSpan horaCierre = new TimeSpan(19, 0, 0);
-
-
-                    if (hora < horaApertura || hora > horaCierre)
-                    {
-                        throw new Exception("\"La hora ingresada no es válida. Debe estar entre 07:00 y 19:00.");
-                    }
-                    citadata.ModificarCita(id, fecha, hora, veterinarioid, mascotaid);
+                    Validacion(cita);
+                    citaData.ModificarCita(cita);
                     trx.Complete();
                 }
             }
@@ -97,13 +90,13 @@ namespace BLL
                 throw;
             }
         }
-        public void EliminarCliente(int idcita)
+        public void EliminarCita(int idEliminar)
         {
             try
             {
-                using (var trx = new TransactionScope())
+                using (TransactionScope trx = new TransactionScope())
                 {
-                    citadata.EliminarCita(idcita);
+                    citaData.EliminarCita(idEliminar);
                     trx.Complete();
                 }
             }
