@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             menuStrip1 = new MenuStrip();
             menuToolStripMenuItem = new ToolStripMenuItem();
             agregarVeterinarioToolStripMenuItem = new ToolStripMenuItem();
@@ -37,13 +38,16 @@
             servicioToolStripMenuItem = new ToolStripMenuItem();
             agendarCitaToolStripMenuItem = new ToolStripMenuItem();
             comprarProductoToolStripMenuItem = new ToolStripMenuItem();
+            facturarToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             lblEmpleadoNombre = new Label();
             dgvCitasHoy = new DataGridView();
             lblTitulo = new Label();
-            facturarToolStripMenuItem = new ToolStripMenuItem();
+            lblVeterinaria = new Label();
+            imgCruz = new PictureBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCitasHoy).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgCruz).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -65,28 +69,28 @@
             // agregarVeterinarioToolStripMenuItem
             // 
             agregarVeterinarioToolStripMenuItem.Name = "agregarVeterinarioToolStripMenuItem";
-            agregarVeterinarioToolStripMenuItem.Size = new Size(180, 22);
+            agregarVeterinarioToolStripMenuItem.Size = new Size(175, 22);
             agregarVeterinarioToolStripMenuItem.Text = "Agregar Veterinario";
             agregarVeterinarioToolStripMenuItem.Click += agregarVeterinarioToolStripMenuItem_Click;
             // 
             // agregarClienteToolStripMenuItem
             // 
             agregarClienteToolStripMenuItem.Name = "agregarClienteToolStripMenuItem";
-            agregarClienteToolStripMenuItem.Size = new Size(180, 22);
+            agregarClienteToolStripMenuItem.Size = new Size(175, 22);
             agregarClienteToolStripMenuItem.Text = "Agregar Cliente";
             agregarClienteToolStripMenuItem.Click += agregarClienteToolStripMenuItem_Click_1;
             // 
             // agregarMascotaToolStripMenuItem
             // 
             agregarMascotaToolStripMenuItem.Name = "agregarMascotaToolStripMenuItem";
-            agregarMascotaToolStripMenuItem.Size = new Size(180, 22);
+            agregarMascotaToolStripMenuItem.Size = new Size(175, 22);
             agregarMascotaToolStripMenuItem.Text = "Agregar Mascota";
             agregarMascotaToolStripMenuItem.Click += agregarMascotaToolStripMenuItem_Click;
             // 
             // agregarProductoToolStripMenuItem
             // 
             agregarProductoToolStripMenuItem.Name = "agregarProductoToolStripMenuItem";
-            agregarProductoToolStripMenuItem.Size = new Size(180, 22);
+            agregarProductoToolStripMenuItem.Size = new Size(175, 22);
             agregarProductoToolStripMenuItem.Text = "Agregar Producto";
             agregarProductoToolStripMenuItem.Click += agregarProductoToolStripMenuItem_Click;
             // 
@@ -100,15 +104,22 @@
             // agendarCitaToolStripMenuItem
             // 
             agendarCitaToolStripMenuItem.Name = "agendarCitaToolStripMenuItem";
-            agendarCitaToolStripMenuItem.Size = new Size(180, 22);
+            agendarCitaToolStripMenuItem.Size = new Size(173, 22);
             agendarCitaToolStripMenuItem.Text = "Agendar Cita";
             agendarCitaToolStripMenuItem.Click += agendarCitaToolStripMenuItem_Click;
             // 
             // comprarProductoToolStripMenuItem
             // 
             comprarProductoToolStripMenuItem.Name = "comprarProductoToolStripMenuItem";
-            comprarProductoToolStripMenuItem.Size = new Size(180, 22);
+            comprarProductoToolStripMenuItem.Size = new Size(173, 22);
             comprarProductoToolStripMenuItem.Text = "Comprar Producto";
+            // 
+            // facturarToolStripMenuItem
+            // 
+            facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
+            facturarToolStripMenuItem.Size = new Size(173, 22);
+            facturarToolStripMenuItem.Text = "Facturar";
+            facturarToolStripMenuItem.Click += facturarToolStripMenuItem_Click;
             // 
             // salirToolStripMenuItem
             // 
@@ -120,10 +131,11 @@
             // lblEmpleadoNombre
             // 
             lblEmpleadoNombre.AutoSize = true;
-            lblEmpleadoNombre.Font = new Font("Segoe UI", 15F);
-            lblEmpleadoNombre.Location = new Point(266, 88);
+            lblEmpleadoNombre.BackColor = Color.Transparent;
+            lblEmpleadoNombre.Font = new Font("Microsoft Sans Serif", 15.75F);
+            lblEmpleadoNombre.Location = new Point(259, 171);
             lblEmpleadoNombre.Name = "lblEmpleadoNombre";
-            lblEmpleadoNombre.Size = new Size(65, 28);
+            lblEmpleadoNombre.Size = new Size(70, 25);
             lblEmpleadoNombre.TabIndex = 3;
             lblEmpleadoNombre.Text = "label1";
             // 
@@ -134,34 +146,54 @@
             dgvCitasHoy.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCitasHoy.BackgroundColor = SystemColors.ButtonFace;
             dgvCitasHoy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCitasHoy.Location = new Point(266, 190);
+            dgvCitasHoy.Location = new Point(259, 257);
+            dgvCitasHoy.MultiSelect = false;
             dgvCitasHoy.Name = "dgvCitasHoy";
             dgvCitasHoy.ReadOnly = true;
+            dgvCitasHoy.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCitasHoy.Size = new Size(889, 415);
             dgvCitasHoy.TabIndex = 5;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 12F);
-            lblTitulo.Location = new Point(266, 142);
+            lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Font = new Font("Microsoft Sans Serif", 15.75F);
+            lblTitulo.Location = new Point(259, 218);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(109, 21);
+            lblTitulo.Size = new Size(169, 25);
             lblTitulo.TabIndex = 6;
-            lblTitulo.Text = "Citas para hoy";
+            lblTitulo.Text = "Turnos para hoy";
             // 
-            // facturarToolStripMenuItem
+            // lblVeterinaria
             // 
-            facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
-            facturarToolStripMenuItem.Size = new Size(180, 22);
-            facturarToolStripMenuItem.Text = "Facturar";
-            facturarToolStripMenuItem.Click += facturarToolStripMenuItem_Click;
+            lblVeterinaria.AutoSize = true;
+            lblVeterinaria.BackColor = Color.Transparent;
+            lblVeterinaria.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblVeterinaria.Location = new Point(515, 42);
+            lblVeterinaria.Name = "lblVeterinaria";
+            lblVeterinaria.Size = new Size(453, 65);
+            lblVeterinaria.TabIndex = 8;
+            lblVeterinaria.Text = "Veterinaria PetCare";
+            // 
+            // imgCruz
+            // 
+            imgCruz.BackColor = Color.Transparent;
+            imgCruz.Image = (Image)resources.GetObject("imgCruz.Image");
+            imgCruz.Location = new Point(429, 42);
+            imgCruz.Name = "imgCruz";
+            imgCruz.Size = new Size(80, 73);
+            imgCruz.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgCruz.TabIndex = 9;
+            imgCruz.TabStop = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1265, 617);
+            Controls.Add(imgCruz);
+            Controls.Add(lblVeterinaria);
             Controls.Add(lblTitulo);
             Controls.Add(dgvCitasHoy);
             Controls.Add(lblEmpleadoNombre);
@@ -176,6 +208,7 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCitasHoy).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgCruz).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -196,5 +229,7 @@
         private DataGridView dgvCitasHoy;
         private Label lblTitulo;
         private ToolStripMenuItem facturarToolStripMenuItem;
+        private Label lblVeterinaria;
+        private PictureBox imgCruz;
     }
 }

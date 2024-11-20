@@ -30,6 +30,10 @@ namespace UI
             cmbMascota.DataSource = listaMascota;
             cmbMascota.DisplayMember = "Nombre";
             cmbMascota.ValueMember = "ID";
+
+            cmbModificarMascota.DataSource = listaMascota;
+            cmbModificarMascota.DisplayMember = "Nombre";
+            cmbModificarMascota.ValueMember = "ID";
         }
 
         //private void ObtenerVeterinario()
@@ -77,7 +81,7 @@ namespace UI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void FrmCita_Load(object sender, EventArgs e)

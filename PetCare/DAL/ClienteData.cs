@@ -40,7 +40,7 @@ namespace DAL
             }
 
         }
-        public static List<Cliente> ObtenerCliente (int clienteId)
+        public List<Cliente> ObtenerCliente ()
         {
             List<Cliente> listaCliente = new List<Cliente>();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);

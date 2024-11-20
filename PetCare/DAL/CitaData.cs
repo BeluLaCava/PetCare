@@ -23,7 +23,7 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO Cita (fecha, hora, veterinario_id, mascota_id) 
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO Citas (fecha, hora, veterinario_id, mascota_id) 
                                                     VALUES (fecha, hora, @veterinarioid, @mascotaid)", conn);
                     using (cmd)
                     {
@@ -51,7 +51,7 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Cita", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Citas", conn);
                     using (cmd)
                     {
                         SqlDataReader reader = cmd.ExecuteReader();
@@ -86,7 +86,7 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE Cita SET fecha = @fecha, Hora = @hora, Veterinarioid = @veterinarioid, Mascotaid = @mascotaid where ID = @idcita", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE Citas SET fecha = @fecha, Hora = @hora, Veterinarioid = @veterinarioid, Mascotaid = @mascotaid where ID = @idcita", conn);
                     using (cmd)
                     {
                         cmd.Parameters.AddWithValue("@idcita", cita.ID);
@@ -112,7 +112,7 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("delete from Cita where ID = @idcita", conn);
+                    SqlCommand cmd = new SqlCommand("delete from Citas where ID = @idcita", conn);
                     using (cmd)
                     {
                         cmd.Parameters.AddWithValue("@idcita", idEliminar);
