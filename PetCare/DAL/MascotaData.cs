@@ -12,12 +12,9 @@ namespace DAL
 {
     public class MascotaData
     {
+      private ClienteData clienteData = new ClienteData();
       public void GuardarMascota(Mascota mascota)
       {
-         if (!ExisteCliente(mascota.ClienteID))
-         {
-            throw new Exception("El cliente seleccionado no existe.");
-         }
 
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
@@ -26,15 +23,14 @@ namespace DAL
             using (conn)
             {
                conn.Open();
-               SqlCommand cmd = new SqlCommand(@"INSERT INTO Mascotas (nombre, especie, raza, fecha_nacimiento, cliente_id) 
-                                            VALUES (@nombre, @especie, @raza, @fecha_nacimiento, @cliente_id)", conn);
+               SqlCommand cmd = new SqlCommand(@"INSERT INTO Mascotas (nombre, especie, raza, fecha_nacimiento, cliente_id) VALUES (@nombre, @especie, @raza, @fecha_nacimiento, @cliente_id)", conn);
                using (cmd)
                {
                   cmd.Parameters.AddWithValue("@nombre", mascota.Nombre);
                   cmd.Parameters.AddWithValue("@especie", mascota.Especie);
                   cmd.Parameters.AddWithValue("@raza", mascota.Raza);
                   cmd.Parameters.AddWithValue("@fecha_nacimiento", mascota.FechaNacimiento);
-                  cmd.Parameters.AddWithValue("@cliente_id", mascota.ClienteID);
+                  cmd.Parameters.AddWithValue("@cliente_id", mascota.Cliente.ID);
 
                   cmd.ExecuteNonQuery();
                }
@@ -69,58 +65,73 @@ namespace DAL
       }
       public List<Mascota> ObtenerMascotas()
       {
+<<<<<<< Updated upstream
          List<Mascota> listaMascotas = new List<Mascota>();
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
          {
 
             using (conn)
+=======
+         try
+         {
+            List<Mascota> listaMascotas = new List<Mascota>();
+
+            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString))
+>>>>>>> Stashed changes
             {
-               conn.Open();
-               SqlCommand cmd = new SqlCommand("SELECT * FROM Mascotas", conn);
-               using (cmd)
+               conexion.Open();
+               string query = "SELECT ID, nombre, especie, raza, fecha_nacimiento, cliente_id FROM Mascotas";
+
+               using (SqlCommand command = new SqlCommand(query, conexion))
                {
-                  SqlDataReader reader = cmd.ExecuteReader();
-                  while (reader.Read())
+                  using (SqlDataReader reader = command.ExecuteReader())
                   {
-                     Mascota mascota = new Mascota
+                     while (reader.Read())
                      {
-                        ID = Convert.ToInt32(reader["ID"]),
-                        Nombre = reader["nombre"].ToString(),
-                        Especie = reader["especie"].ToString(),
-                        Raza = reader["raza"].ToString(),
-                        FechaNacimiento = reader["fecha_nacimiento"] != DBNull.Value ? Convert.ToDateTime(reader["fecha_nacimiento"]) : (DateTime?)null,
-                        ClienteID = Convert.ToInt32(reader["cliente_id"])
-                     };
-                     listaMascotas.Add(mascota);
+                        int clienteId = Convert.ToInt32(reader["cliente_id"].ToString());
+                        Cliente cliente = ClienteData.ObtenerCliente(clienteId);
+
+                        Mascota mascota = MascotaMapper.Map(reader, cliente); 
+                        listaMascotas.Add(mascota);
+                     }
                   }
                }
             }
+            return listaMascotas;
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al obtener mascotas: " + ex.Message);
+            throw new Exception("Error al obtener las mascotas: " + ex.Message, ex);
          }
-         return listaMascotas;
       }
       public Mascota GetById(int id)
       {
          try
          {
+<<<<<<< Updated upstream
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString))
+=======
+            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString))
+>>>>>>> Stashed changes
             {
-               conn.Open();
+               conexion.Open();
                string query = "SELECT ID, Nombre, Especie, Raza, FechaNacimiento, ClienteID FROM Mascotas WHERE ID = @id";
 
-               using (SqlCommand cmd = new SqlCommand(query, conn))
+               using (SqlCommand command = new SqlCommand(query, conexion))
                {
-                  cmd.Parameters.AddWithValue("@id", id);
-                  using (SqlDataReader reader = cmd.ExecuteReader())
+                  command.Parameters.AddWithValue("@id", id);
+
+                  using (SqlDataReader reader = command.ExecuteReader())
                   {
                      while (reader.Read())
                      {
-                        Mascota mascota = MascotaMapper.Map(reader);
+                        int clienteId = Convert.ToInt32(reader["ClienteID"]);
+                        Cliente cliente = ClienteData.ObtenerCliente(clienteId);  
+
+                        Mascota mascota = MascotaMapper.Map(reader, cliente); 
+
                         return mascota;
                      }
                   }
@@ -130,7 +141,7 @@ namespace DAL
          }
          catch (Exception ex)
          {
-            throw;
+            throw new Exception("Error al obtener la mascota por ID: " + ex.Message, ex);
          }
       }
       public void ModificarMascota(Mascota mascota)
@@ -162,24 +173,31 @@ namespace DAL
 
       public void EliminarMascota(int id)
       {
+<<<<<<< Updated upstream
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
          try
          {
 
             using (conn)
+=======
+         try
+         {
+            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDBCliente"].ConnectionString))
+>>>>>>> Stashed changes
             {
-               conn.Open();
-               SqlCommand cmd = new SqlCommand("DELETE FROM Mascotas WHERE ID = @id", conn);
-               using (cmd)
+               conexion.Open();
+
+               string query = "DELETE FROM Mascotas WHERE ID = @id";
+               using (SqlCommand command = new SqlCommand(query, conexion))
                {
-                  cmd.Parameters.AddWithValue("@id", id);
-                  cmd.ExecuteNonQuery();
+                  command.Parameters.AddWithValue("@id", id);
+                  command.ExecuteNonQuery();
                }
             }
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al eliminar mascota: " + ex.Message);
+            throw new Exception("Error al eliminar la mascota: " + ex.Message, ex);
          }
       }
 

@@ -10,17 +10,19 @@ namespace Mapper
 {
     public static class MascotaMapper
     {
-      public static Mascota Map(SqlDataReader reader)
+      public static Mascota Map(SqlDataReader reader, Cliente cliente)
       {
-         return new Mascota
+         Mascota mascota = new Mascota
          {
             ID = reader.GetInt32(reader.GetOrdinal("ID")),
             Nombre = reader.GetString(reader.GetOrdinal("Nombre")),
             Especie = reader.GetString(reader.GetOrdinal("Especie")),
             Raza = reader.GetString(reader.GetOrdinal("Raza")),
             FechaNacimiento = reader.IsDBNull(reader.GetOrdinal("FechaNacimiento")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("FechaNacimiento")),
-            ClienteID = reader.GetInt32(reader.GetOrdinal("ClienteID"))
+            Cliente = cliente
+
          };
+         return mascota;
       }
 
    }

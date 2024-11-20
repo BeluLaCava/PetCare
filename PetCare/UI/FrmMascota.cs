@@ -69,7 +69,7 @@ namespace UI
 
 
             MascotaBusiness business = new MascotaBusiness();
-            business.ModificarMascota(mascota);           
+            business.ModificarMascota(mascota.ID, mascota);
             MessageBox.Show("Mascota modificada correctamente");
          }
          catch (Exception ex)
@@ -85,6 +85,7 @@ namespace UI
             int id = Convert.ToInt32(cmbEliminar.SelectedValue);
             MascotaBusiness business = new MascotaBusiness();
             business.EliminarMascota(id);
+            CargarMascotas();
             MessageBox.Show("Mascota eliminada correctamente");
          }
          catch (Exception ex)

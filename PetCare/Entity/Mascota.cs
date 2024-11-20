@@ -12,7 +12,11 @@ namespace Entity
       public string Nombre { get; set; }
       public string Especie { get; set; }
       public string Raza { get; set; }
-      public DateTime? FechaNacimiento { get; set; } 
-      public Cliente ClienteID { get; set; }
+
+      public DateTime? FechaNacimiento { get; set; }
+      public int ClienteID { get; set; } 
+      public Cliente Cliente { get; set; }
+
+
    }
 }
