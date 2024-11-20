@@ -11,23 +11,8 @@ namespace BLL
 {
     public class MascotaBusiness
     {
-      private MascotaData mascotaData;
+      private MascotaData mascotaData = new MascotaData();
 
-      public MascotaBusiness()
-      {
-         mascotaData = new MascotaData();
-      }
-      public void GuardarMascota(Mascota mascota)
-      {
-         try
-         {
-            mascotaData.GuardarMascota(mascota);
-         }
-         catch (Exception ex)
-         {
-            throw new Exception("Error al guardar la mascota: " + ex.Message);
-         }
-      }
       public List<Mascota> ObtenerMascotas()
       {
          try
@@ -36,7 +21,34 @@ namespace BLL
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al obtener las mascotas: " + ex.Message);
+            throw;
+         }
+      }
+
+      public void GuardarMascota(Mascota mascota)
+      {
+         try
+         {
+            using (TransactionScope trx = new TransactionScope())
+            {
+               if (string.IsNullOrEmpty(mascota.Nombre))
+               {
+                  throw new Exception("El nombre de la mascota no puede estar vacío.");
+               }
+
+               if (string.IsNullOrEmpty(mascota.Especie))
+               {
+                  throw new Exception("La especie de la mascota no puede estar vacía.");
+               }
+
+
+               mascotaData.GuardarMascota(mascota);
+               trx.Complete();
+            }
+         }
+         catch (Exception ex)
+         {
+            throw;
          }
       }
 
@@ -48,33 +60,75 @@ namespace BLL
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al obtener la mascota: " + ex.Message);
+            throw;
          }
       }
 
-      public void ModificarMascota(Mascota mascota)
+      public void ModificarMascota(int idMascota, Mascota nuevaMascota)
       {
          try
          {
-            mascotaData.ModificarMascota(mascota);
+            using (TransactionScope trx = new TransactionScope())
+            {
+               Mascota mascotaExistente = mascotaData.GetById(idMascota);
+               if (mascotaExistente == null)
+               {
+                  throw new Exception("Mascota inexistente.");
+               }
+               mascotaExistente.Nombre = nuevaMascota.Nombre;
+               mascotaExistente.Especie = nuevaMascota.Especie;
+               mascotaExistente.Raza = nuevaMascota.Raza;
+               mascotaExistente.FechaNacimiento = nuevaMascota.FechaNacimiento;
+
+               mascotaData.ModificarMascota(mascotaExistente);
+               trx.Complete();
+            }
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al modificar la mascota: " + ex.Message);
+            throw;
          }
       }
 
-      public void EliminarMascota(int id)
+      public void EliminarMascota(int idMascota)
       {
          try
          {
-            mascotaData.EliminarMascota(id);
+            using (TransactionScope trx = new TransactionScope())
+            {
+               Mascota mascota = mascotaData.GetById(idMascota);
+               if (mascota == null)
+               {
+                  throw new Exception("Mascota inexistente.");
+               }
+
+               mascotaData.EliminarMascota(idMascota);
+               trx.Complete();
+            }
          }
          catch (Exception ex)
          {
-            throw new Exception("Error al eliminar la mascota: " + ex.Message);
+            throw;
          }
       }
 
+      public void GuardarMascotasMultiples(List<Mascota> mascotas)
+      {
+         try
+         {
+            using (TransactionScope trx = new TransactionScope())
+            {
+               foreach (var mascota in mascotas)
+               {
+                  GuardarMascota(mascota);
+               }
+               trx.Complete();
+            }
+         }
+         catch (Exception ex)
+         {
+            throw;
+         }
+      }
    }
 }
