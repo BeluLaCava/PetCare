@@ -64,23 +64,20 @@ namespace BLL
          }
       }
 
-      public void ModificarMascota(int idMascota, Mascota nuevaMascota)
+      public void ModificarMascota(Mascota mascota)
       {
          try
          {
-            using (TransactionScope trx = new TransactionScope())
+                Mascota mascotaExistente = mascotaData.GetById(mascota.ID);
+                using (TransactionScope trx = new TransactionScope())
             {
-               Mascota mascotaExistente = mascotaData.GetById(idMascota);
+              
                if (mascotaExistente == null)
                {
                   throw new Exception("Mascota inexistente.");
                }
-               mascotaExistente.Nombre = nuevaMascota.Nombre;
-               mascotaExistente.Especie = nuevaMascota.Especie;
-               mascotaExistente.Raza = nuevaMascota.Raza;
-               mascotaExistente.FechaNacimiento = nuevaMascota.FechaNacimiento;
-
-               mascotaData.ModificarMascota(mascotaExistente);
+               
+               mascotaData.ModificarMascota(mascota);
                trx.Complete();
             }
          }
@@ -94,9 +91,10 @@ namespace BLL
       {
          try
          {
-            using (TransactionScope trx = new TransactionScope())
+                Mascota mascota = mascotaData.GetById(idMascota);
+                using (TransactionScope trx = new TransactionScope())
             {
-               Mascota mascota = mascotaData.GetById(idMascota);
+               
                if (mascota == null)
                {
                   throw new Exception("Mascota inexistente.");
