@@ -117,7 +117,7 @@
             Controls.Add(groupBox1);
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmLogin";
+            Text = "Login";
             Load += FrmLogin_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

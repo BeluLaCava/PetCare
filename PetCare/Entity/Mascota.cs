@@ -14,7 +14,8 @@ namespace Entity
       public string Raza { get; set; }
 
       public DateTime FechaNacimiento { get; set; }
-      public Cliente ClienteId { get; set; }
+        public string Cliente { get => ClienteId.Nombre; }
+        public Cliente ClienteId { get; set; }
 
 
    }

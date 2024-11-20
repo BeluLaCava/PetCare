@@ -33,7 +33,7 @@ namespace UI
             cmbModificarCliente.DisplayMember = "Nombre";
             cmbModificarCliente.ValueMember = "ID";
         }
-        
+
 
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace UI
             try
             {
                 int id = Convert.ToInt32(txtEliminarId.Text);
-               
+
                 mascotaBusiness.EliminarMascota(id);
                 MostrarMascotas();
                 MessageBox.Show("Mascota eliminada correctamente");
@@ -109,6 +109,7 @@ namespace UI
 
             dgvMascotas.DataSource = null;
             dgvMascotas.DataSource = listamascota;
+            dgvMascotas.Columns["ClienteId"].Visible = false;
         }
         private void LimpiarCamposModificar()
         {
@@ -126,7 +127,34 @@ namespace UI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+        }
+
+        private void dgvMascotas_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvMascotas.SelectedRows.Count > 0)
+                {
+                    Mascota mascotaSeleccionado = (Mascota)dgvMascotas.SelectedRows[0].DataBoundItem;
+                    if (mascotaSeleccionado != null)
+                    {
+                        txtModificarID.Text = mascotaSeleccionado.ID.ToString();
+                        txtModificarNombre.Text = mascotaSeleccionado.Nombre;
+                        txtModificarEspecie.Text = mascotaSeleccionado.Especie;
+                        txtModificarRaza.Text = mascotaSeleccionado.Raza;
+                        txtEliminarId.Text = mascotaSeleccionado.ID.ToString();
+                    }
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

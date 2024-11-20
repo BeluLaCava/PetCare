@@ -6,6 +6,7 @@ namespace UI
     public partial class Form1 : Form
     {
         private Empleado empleado;
+       
         public Form1(Empleado empleadoAutenticado)
         {
             InitializeComponent();
@@ -15,13 +16,15 @@ namespace UI
         }
         private void MostrarCitasHoy()
         {
-
+           
         }
         private void OcultarControles()
         {
             lblEmpleadoNombre.Visible = false;
             lblTitulo.Visible = false;
             dgvCitasHoy.Visible = false;
+            lblVeterinaria.Visible = false;
+            imgCruz.Visible = false;
         }
 
         private void MostrarControles()
@@ -29,6 +32,8 @@ namespace UI
             lblEmpleadoNombre.Visible = true;
             lblTitulo.Visible = true;
             dgvCitasHoy.Visible = true;
+            lblVeterinaria.Visible = true;
+            imgCruz.Visible = true;
         }
         private void agregarVeterinarioToolStripMenuItem_Click(object sender, EventArgs e)
         {

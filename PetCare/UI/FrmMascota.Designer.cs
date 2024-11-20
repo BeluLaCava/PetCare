@@ -31,6 +31,7 @@
             groupBox4 = new GroupBox();
             dgvMascotas = new DataGridView();
             groupBox3 = new GroupBox();
+            txtEliminarId = new TextBox();
             label10 = new Label();
             btnEliminar = new Button();
             groupBox2 = new GroupBox();
@@ -61,7 +62,6 @@
             label1 = new Label();
             btnGuardar = new Button();
             btnSalir = new Button();
-            txtEliminarId = new TextBox();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMascotas).BeginInit();
             groupBox3.SuspendLayout();
@@ -86,11 +86,14 @@
             dgvMascotas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMascotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMascotas.Location = new Point(6, 22);
+            dgvMascotas.MultiSelect = false;
             dgvMascotas.Name = "dgvMascotas";
             dgvMascotas.ReadOnly = true;
             dgvMascotas.RowHeadersWidth = 51;
+            dgvMascotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMascotas.Size = new Size(777, 430);
             dgvMascotas.TabIndex = 4;
+            dgvMascotas.SelectionChanged += dgvMascotas_SelectionChanged;
             // 
             // groupBox3
             // 
@@ -103,6 +106,14 @@
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Mascota";
+            // 
+            // txtEliminarId
+            // 
+            txtEliminarId.Font = new Font("Segoe UI", 12F);
+            txtEliminarId.Location = new Point(19, 48);
+            txtEliminarId.Name = "txtEliminarId";
+            txtEliminarId.Size = new Size(100, 29);
+            txtEliminarId.TabIndex = 13;
             // 
             // label10
             // 
@@ -120,7 +131,7 @@
             btnEliminar.Location = new Point(171, 40);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(143, 42);
-            btnEliminar.TabIndex = 20;
+            btnEliminar.TabIndex = 14;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
@@ -153,7 +164,7 @@
             txtModificarID.Location = new Point(96, 18);
             txtModificarID.Name = "txtModificarID";
             txtModificarID.Size = new Size(223, 29);
-            txtModificarID.TabIndex = 25;
+            txtModificarID.TabIndex = 6;
             // 
             // label2
             // 
@@ -182,7 +193,7 @@
             cmbModificarCliente.Location = new Point(96, 207);
             cmbModificarCliente.Name = "cmbModificarCliente";
             cmbModificarCliente.Size = new Size(223, 29);
-            cmbModificarCliente.TabIndex = 11;
+            cmbModificarCliente.TabIndex = 10;
             // 
             // dtpModificarFecha
             // 
@@ -190,7 +201,7 @@
             dtpModificarFecha.Location = new Point(171, 252);
             dtpModificarFecha.Name = "dtpModificarFecha";
             dtpModificarFecha.Size = new Size(215, 29);
-            dtpModificarFecha.TabIndex = 23;
+            dtpModificarFecha.TabIndex = 11;
             // 
             // label8
             // 
@@ -238,7 +249,7 @@
             txtModificarEspecie.Location = new Point(96, 158);
             txtModificarEspecie.Name = "txtModificarEspecie";
             txtModificarEspecie.Size = new Size(223, 29);
-            txtModificarEspecie.TabIndex = 17;
+            txtModificarEspecie.TabIndex = 9;
             // 
             // txtModificarNombre
             // 
@@ -246,7 +257,7 @@
             txtModificarNombre.Location = new Point(96, 66);
             txtModificarNombre.Name = "txtModificarNombre";
             txtModificarNombre.Size = new Size(223, 29);
-            txtModificarNombre.TabIndex = 16;
+            txtModificarNombre.TabIndex = 7;
             // 
             // txtModificarRaza
             // 
@@ -254,7 +265,7 @@
             txtModificarRaza.Location = new Point(96, 111);
             txtModificarRaza.Name = "txtModificarRaza";
             txtModificarRaza.Size = new Size(223, 29);
-            txtModificarRaza.TabIndex = 14;
+            txtModificarRaza.TabIndex = 8;
             // 
             // btnModificar
             // 
@@ -262,7 +273,7 @@
             btnModificar.Location = new Point(275, 287);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(143, 42);
-            btnModificar.TabIndex = 9;
+            btnModificar.TabIndex = 12;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
@@ -305,7 +316,7 @@
             cmbCliente.Location = new Point(96, 171);
             cmbCliente.Name = "cmbCliente";
             cmbCliente.Size = new Size(223, 29);
-            cmbCliente.TabIndex = 9;
+            cmbCliente.TabIndex = 3;
             // 
             // dtpFecha
             // 
@@ -313,7 +324,7 @@
             dtpFecha.Location = new Point(150, 213);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(215, 29);
-            dtpFecha.TabIndex = 8;
+            dtpFecha.TabIndex = 4;
             // 
             // txtRaza
             // 
@@ -321,7 +332,7 @@
             txtRaza.Location = new Point(96, 74);
             txtRaza.Name = "txtRaza";
             txtRaza.Size = new Size(222, 29);
-            txtRaza.TabIndex = 7;
+            txtRaza.TabIndex = 1;
             // 
             // txtEspecie
             // 
@@ -329,7 +340,7 @@
             txtEspecie.Location = new Point(96, 122);
             txtEspecie.Name = "txtEspecie";
             txtEspecie.Size = new Size(222, 29);
-            txtEspecie.TabIndex = 6;
+            txtEspecie.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -337,7 +348,7 @@
             txtNombre.Location = new Point(96, 29);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(222, 29);
-            txtNombre.TabIndex = 5;
+            txtNombre.TabIndex = 0;
             // 
             // label4
             // 
@@ -395,7 +406,7 @@
             btnGuardar.Location = new Point(275, 257);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(143, 42);
-            btnGuardar.TabIndex = 0;
+            btnGuardar.TabIndex = 5;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
@@ -406,18 +417,10 @@
             btnSalir.Location = new Point(638, 619);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(143, 42);
-            btnSalir.TabIndex = 23;
+            btnSalir.TabIndex = 15;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
-            // 
-            // txtEliminarId
-            // 
-            txtEliminarId.Font = new Font("Segoe UI", 12F);
-            txtEliminarId.Location = new Point(19, 48);
-            txtEliminarId.Name = "txtEliminarId";
-            txtEliminarId.Size = new Size(100, 29);
-            txtEliminarId.TabIndex = 23;
             // 
             // FrmMascota
             // 
