@@ -8,6 +8,7 @@ namespace Entity
 {
     public class Veterinario
     {
+
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Especialidad { get; set; }
