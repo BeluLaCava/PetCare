@@ -31,7 +31,7 @@ namespace UI
                 clienteBusiness.GuardarClientes(listaCliente);
                 listaCliente = new List<Cliente>();
                 MostrarClientes();
-                ObtenerClientes();
+
                 MessageBox.Show("Cliente agregado con exito");
             }
             catch (Exception ex)
@@ -58,24 +58,7 @@ namespace UI
                 MessageBox.Show(ex.Message);
             }
         }
-        public void ObtenerClientes()
-        {
-            try
-            {
-                List<Cliente> listaClientes = clienteBusiness.ObtenerCliente();
 
-                cmbEliminar.DataSource = listaClientes;
-                cmbEliminar.DisplayMember = "Nombre";
-                cmbEliminar.ValueMember = "ID";
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-
-
-        }
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
@@ -87,7 +70,6 @@ namespace UI
                 string telefono = txtModificarTelefono.Text;
                 clienteBusiness.ModificarCliente(id, apellido, direccion, email, telefono);
                 MostrarClientes();
-                ObtenerClientes();
                 MessageBox.Show("Cliente modificado");
 
             }
@@ -101,18 +83,15 @@ namespace UI
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             MostrarClientes();
-            ObtenerClientes();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                Cliente seleccionado = (Cliente)cmbEliminar.SelectedItem;
-                int idcliente = seleccionado.ID;
-                clienteBusiness.EliminarCliente(idcliente);
+                int id = Convert.ToInt32(txtEliminarId.Text);
+                clienteBusiness.EliminarCliente(id);
                 MostrarClientes();
-                ObtenerClientes();
                 MessageBox.Show("Cliente eliminado");
             }
             catch (Exception ex)
@@ -143,7 +122,7 @@ namespace UI
                 listaCliente.Add(cliente);
 
                 LimpiarCampos();
-                MessageBox.Show("Cliente agregado con exito");
+
 
             }
             catch (Exception ex)
@@ -161,24 +140,52 @@ namespace UI
                 if (dgvClientes.SelectedRows.Count > 0)
                 {
                     Cliente clienteSeleccionado = (Cliente)dgvClientes.SelectedRows[0].DataBoundItem;
-                    if(clienteSeleccionado != null)
+                    if (clienteSeleccionado != null)
                     {
                         txtIdCliente.Text = clienteSeleccionado.ID.ToString();
                         txtModificarApellido.Text = clienteSeleccionado.Nombre;
                         txtModificarDireccion.Text = clienteSeleccionado.Direccion;
                         txtModificarEmail.Text = clienteSeleccionado.Email;
                         txtModificarTelefono.Text = clienteSeleccionado.Telefono;
+                        txtEliminarId.Text = clienteSeleccionado.ID.ToString();
                     }
-                   
+
                 }
 
-                
+
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cliente = new Cliente();
+
+                cliente.Nombre = txtApellido.Text;
+                cliente.Direccion = txtDireccion.Text;
+                cliente.Email = txtEmail.Text.ToLower();
+                cliente.Telefono = txtTelefono.Text;
+                clienteBusiness.GuardarCliente(cliente);
+                MostrarClientes();
+                MessageBox.Show("Cliente agregado con exito");
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

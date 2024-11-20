@@ -53,7 +53,7 @@ namespace UI
 
                 MessageBox.Show(ex.Message);
             }
-            
+
 
 
         }
@@ -62,6 +62,11 @@ namespace UI
         {
             txtEmail.Text = "Ramirez@gmail.com";
             txtPass.Text = "123";
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

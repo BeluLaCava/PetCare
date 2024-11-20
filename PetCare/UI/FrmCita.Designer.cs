@@ -35,6 +35,7 @@
             btnEliminarCita = new Button();
             label10 = new Label();
             groupBox2 = new GroupBox();
+            dtpModificarHora = new DateTimePicker();
             txtCita = new TextBox();
             dtpModificarFecha = new DateTimePicker();
             label8 = new Label();
@@ -46,6 +47,8 @@
             label7 = new Label();
             btnModificar = new Button();
             groupBox1 = new GroupBox();
+            btnConfirmar = new Button();
+            btnBorrador = new Button();
             dtpHora = new DateTimePicker();
             dtpFecha = new DateTimePicker();
             label2 = new Label();
@@ -56,7 +59,6 @@
             label4 = new Label();
             btnGuardar = new Button();
             btnSalir = new Button();
-            dtpModificarHora = new DateTimePicker();
             Clientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCitas).BeginInit();
             groupBox3.SuspendLayout();
@@ -67,9 +69,9 @@
             // Clientes
             // 
             Clientes.Controls.Add(dgvCitas);
-            Clientes.Location = new Point(409, 12);
+            Clientes.Location = new Point(613, 59);
             Clientes.Name = "Clientes";
-            Clientes.Size = new Size(816, 497);
+            Clientes.Size = new Size(816, 591);
             Clientes.TabIndex = 9;
             Clientes.TabStop = false;
             Clientes.Text = "Citas";
@@ -85,17 +87,18 @@
             dgvCitas.Name = "dgvCitas";
             dgvCitas.ReadOnly = true;
             dgvCitas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCitas.Size = new Size(804, 469);
+            dgvCitas.Size = new Size(804, 557);
             dgvCitas.TabIndex = 0;
+            dgvCitas.SelectionChanged += dgvCitas_SelectionChanged;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(txtEliminarCita);
             groupBox3.Controls.Add(btnEliminarCita);
             groupBox3.Controls.Add(label10);
-            groupBox3.Location = new Point(409, 537);
+            groupBox3.Location = new Point(119, 656);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(328, 109);
+            groupBox3.Size = new Size(465, 109);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Cita";
@@ -103,15 +106,15 @@
             // txtEliminarCita
             // 
             txtEliminarCita.Font = new Font("Segoe UI", 12F);
-            txtEliminarCita.Location = new Point(19, 56);
+            txtEliminarCita.Location = new Point(101, 50);
             txtEliminarCita.Name = "txtEliminarCita";
-            txtEliminarCita.Size = new Size(143, 29);
+            txtEliminarCita.Size = new Size(198, 29);
             txtEliminarCita.TabIndex = 26;
             // 
             // btnEliminarCita
             // 
             btnEliminarCita.Font = new Font("Segoe UI", 12F);
-            btnEliminarCita.Location = new Point(171, 47);
+            btnEliminarCita.Location = new Point(306, 41);
             btnEliminarCita.Name = "btnEliminarCita";
             btnEliminarCita.Size = new Size(139, 44);
             btnEliminarCita.TabIndex = 24;
@@ -123,7 +126,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F);
-            label10.Location = new Point(19, 29);
+            label10.Location = new Point(21, 53);
             label10.Name = "label10";
             label10.Size = new Size(37, 21);
             label10.TabIndex = 22;
@@ -142,12 +145,23 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(btnModificar);
-            groupBox2.Location = new Point(12, 305);
+            groupBox2.Location = new Point(119, 349);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(373, 317);
+            groupBox2.Size = new Size(465, 301);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Modificar Cita";
+            // 
+            // dtpModificarHora
+            // 
+            dtpModificarHora.CustomFormat = "dd/MM/yyyy HH:mm";
+            dtpModificarHora.Font = new Font("Segoe UI", 12F);
+            dtpModificarHora.Format = DateTimePickerFormat.Time;
+            dtpModificarHora.Location = new Point(101, 156);
+            dtpModificarHora.MinDate = new DateTime(2024, 11, 18, 0, 0, 0, 0);
+            dtpModificarHora.Name = "dtpModificarHora";
+            dtpModificarHora.Size = new Size(198, 29);
+            dtpModificarHora.TabIndex = 19;
             // 
             // txtCita
             // 
@@ -236,7 +250,7 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Segoe UI", 12F);
-            btnModificar.Location = new Point(214, 250);
+            btnModificar.Location = new Point(306, 253);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(143, 42);
             btnModificar.TabIndex = 9;
@@ -246,6 +260,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnConfirmar);
+            groupBox1.Controls.Add(btnBorrador);
             groupBox1.Controls.Add(dtpHora);
             groupBox1.Controls.Add(dtpFecha);
             groupBox1.Controls.Add(label2);
@@ -255,12 +271,34 @@
             groupBox1.Controls.Add(cmbMascota);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnGuardar);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(119, 59);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(373, 274);
+            groupBox1.Size = new Size(465, 274);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Alta Cita";
+            // 
+            // btnConfirmar
+            // 
+            btnConfirmar.Font = new Font("Segoe UI", 12F);
+            btnConfirmar.Location = new Point(157, 211);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.Size = new Size(143, 42);
+            btnConfirmar.TabIndex = 20;
+            btnConfirmar.Text = "Confirmar";
+            btnConfirmar.UseVisualStyleBackColor = true;
+            btnConfirmar.Click += btnConfirmar_Click;
+            // 
+            // btnBorrador
+            // 
+            btnBorrador.Font = new Font("Segoe UI", 12F);
+            btnBorrador.Location = new Point(8, 211);
+            btnBorrador.Name = "btnBorrador";
+            btnBorrador.Size = new Size(143, 42);
+            btnBorrador.TabIndex = 19;
+            btnBorrador.Text = "Agregar Borrador";
+            btnBorrador.UseVisualStyleBackColor = true;
+            btnBorrador.Click += btnBorrador_Click;
             // 
             // dtpHora
             // 
@@ -342,7 +380,7 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Segoe UI", 12F);
-            btnGuardar.Location = new Point(214, 211);
+            btnGuardar.Location = new Point(306, 211);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(143, 42);
             btnGuardar.TabIndex = 0;
@@ -353,30 +391,19 @@
             // btnSalir
             // 
             btnSalir.Font = new Font("Segoe UI", 12F);
-            btnSalir.Location = new Point(763, 584);
+            btnSalir.Location = new Point(633, 697);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(139, 44);
             btnSalir.TabIndex = 27;
-            btnSalir.Text = "Salir";
+            btnSalir.Text = "Cerrar";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
-            // 
-            // dtpModificarHora
-            // 
-            dtpModificarHora.CustomFormat = "dd/MM/yyyy HH:mm";
-            dtpModificarHora.Font = new Font("Segoe UI", 12F);
-            dtpModificarHora.Format = DateTimePickerFormat.Time;
-            dtpModificarHora.Location = new Point(101, 156);
-            dtpModificarHora.MinDate = new DateTime(2024, 11, 18, 0, 0, 0, 0);
-            dtpModificarHora.Name = "dtpModificarHora";
-            dtpModificarHora.Size = new Size(198, 29);
-            dtpModificarHora.TabIndex = 19;
             // 
             // FrmCita
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1295, 685);
+            ClientSize = new Size(1461, 766);
             Controls.Add(btnSalir);
             Controls.Add(Clientes);
             Controls.Add(groupBox3);
@@ -434,5 +461,7 @@
         private Button btnSalir;
         private DateTimePicker dtpHora;
         private DateTimePicker dtpModificarHora;
+        private Button btnConfirmar;
+        private Button btnBorrador;
     }
 }

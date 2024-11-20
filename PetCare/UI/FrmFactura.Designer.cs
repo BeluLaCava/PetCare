@@ -185,7 +185,8 @@
             Controls.Add(txtTotal);
             Controls.Add(label1);
             Name = "FrmFactura";
-            Text = "FrmFactura";
+            Text = "Factura";
+            WindowState = FormWindowState.Maximized;
             Load += FrmFactura_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

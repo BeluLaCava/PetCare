@@ -359,7 +359,7 @@
             Controls.Add(groupBox1);
             Name = "FrmProducto";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmProducto";
+            Text = "Producto";
             WindowState = FormWindowState.Maximized;
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();

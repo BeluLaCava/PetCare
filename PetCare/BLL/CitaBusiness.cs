@@ -33,6 +33,27 @@ namespace BLL
             }
 
         }
+        public void GuardarCitas(List<Cita> cita)
+        {
+            try
+            {
+                using (TransactionScope trx = new TransactionScope())
+                {
+
+
+                    foreach (Cita citas in cita)
+                    {
+                        GuardarCita(citas);
+                    }
+                    trx.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
 
         private static void Validacion(Cita cita)
         {
