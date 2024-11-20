@@ -136,5 +136,71 @@ namespace UI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnBorrador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cita = new Cita();
+                cita.Fecha = dtpFecha.Value.Date;
+                cita.Hora = dtpHora.Value.TimeOfDay;
+                Mascota mascota = new Mascota();
+                mascota.ID = Convert.ToInt32(cmbMascota.SelectedValue);
+                cita.MascotaID = mascota;
+                Veterinario veterinario = new Veterinario();
+                veterinario.ID = Convert.ToInt32(cmbVeterinario.SelectedValue);
+                cita.VeterinarioID = veterinario;
+                listaCita.Add(cita);
+
+
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                citaBusiness.GuardarCitas(listaCita);
+                MostrarCitas();
+                LimpiarCampos();
+                MessageBox.Show("Citas agregadas con exito");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgvCitas_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvCitas.SelectedRows.Count > 0)
+                {
+                    Cita seleccionado = (Cita)dgvCitas.SelectedRows[0].DataBoundItem;
+                    if (seleccionado != null)
+                    {
+                        txtCita.Text = seleccionado.ID.ToString();
+                        cmbModificarMascota.SelectedValue = seleccionado.MascotaID.ID;
+                        cmbModificarVeterinario.SelectedValue = seleccionado.VeterinarioID.ID;
+                        dtpModificarHora.Value = DateTime.Today + seleccionado.Hora;
+                        dtpModificarFecha.Value = seleccionado.Fecha;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

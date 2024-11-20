@@ -30,6 +30,7 @@
         {
             btnGuardar = new Button();
             groupBox1 = new GroupBox();
+            btnAgregar = new Button();
             btnBorrador = new Button();
             txtEmail = new TextBox();
             txtTelefono = new TextBox();
@@ -54,9 +55,10 @@
             txtModificarApellido = new TextBox();
             label9 = new Label();
             btnEliminar = new Button();
-            cmbEliminar = new ComboBox();
             label10 = new Label();
             groupBox3 = new GroupBox();
+            txtEliminarId = new TextBox();
+            btnSalir = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             groupBox4.SuspendLayout();
@@ -67,7 +69,7 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Segoe UI", 12F);
-            btnGuardar.Location = new Point(258, 217);
+            btnGuardar.Location = new Point(223, 256);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(143, 42);
             btnGuardar.TabIndex = 5;
@@ -77,6 +79,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnAgregar);
             groupBox1.Controls.Add(btnBorrador);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtTelefono);
@@ -87,21 +90,32 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(btnGuardar);
-            groupBox1.Location = new Point(89, 63);
+            groupBox1.Location = new Point(89, 34);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(419, 275);
+            groupBox1.Size = new Size(419, 304);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Alta Cliente";
             // 
+            // btnAgregar
+            // 
+            btnAgregar.Font = new Font("Segoe UI", 12F);
+            btnAgregar.Location = new Point(141, 208);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(143, 42);
+            btnAgregar.TabIndex = 6;
+            btnAgregar.Text = "Guardar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
             // btnBorrador
             // 
             btnBorrador.Font = new Font("Segoe UI", 12F);
-            btnBorrador.Location = new Point(109, 217);
+            btnBorrador.Location = new Point(65, 256);
             btnBorrador.Name = "btnBorrador";
             btnBorrador.Size = new Size(143, 42);
             btnBorrador.TabIndex = 4;
-            btnBorrador.Text = "Guardar borrador";
+            btnBorrador.Text = "Agregar Borrador";
             btnBorrador.UseVisualStyleBackColor = true;
             btnBorrador.Click += btnBorrador_Click;
             // 
@@ -188,16 +202,16 @@
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClientes.Size = new Size(1203, 758);
+            dgvClientes.Size = new Size(1203, 691);
             dgvClientes.TabIndex = 4;
             dgvClientes.SelectionChanged += dgvClientes_SelectionChanged;
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(dgvClientes);
-            groupBox4.Location = new Point(548, 63);
+            groupBox4.Location = new Point(548, 34);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(1215, 786);
+            groupBox4.Size = new Size(1215, 718);
             groupBox4.TabIndex = 5;
             groupBox4.TabStop = false;
             groupBox4.Text = "Clientes";
@@ -334,15 +348,6 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
             // 
-            // cmbEliminar
-            // 
-            cmbEliminar.Font = new Font("Segoe UI", 12F);
-            cmbEliminar.FormattingEnabled = true;
-            cmbEliminar.Location = new Point(164, 29);
-            cmbEliminar.Name = "cmbEliminar";
-            cmbEliminar.Size = new Size(237, 29);
-            cmbEliminar.TabIndex = 11;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -355,8 +360,8 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(txtEliminarId);
             groupBox3.Controls.Add(label10);
-            groupBox3.Controls.Add(cmbEliminar);
             groupBox3.Controls.Add(btnEliminar);
             groupBox3.Location = new Point(89, 689);
             groupBox3.Name = "groupBox3";
@@ -365,19 +370,39 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Cliente";
             // 
+            // txtEliminarId
+            // 
+            txtEliminarId.Font = new Font("Segoe UI", 12F);
+            txtEliminarId.Location = new Point(164, 34);
+            txtEliminarId.Name = "txtEliminarId";
+            txtEliminarId.Size = new Size(237, 29);
+            txtEliminarId.TabIndex = 23;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Font = new Font("Segoe UI", 12F);
+            btnSalir.Location = new Point(548, 781);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(143, 42);
+            btnSalir.TabIndex = 24;
+            btnSalir.Text = "Cerrar";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1370, 749);
+            ClientSize = new Size(1416, 797);
+            Controls.Add(btnSalir);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FrmCliente";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmCliente";
+            Text = "Cliente";
             WindowState = FormWindowState.Maximized;
             Load += FrmCliente_Load;
             groupBox1.ResumeLayout(false);
@@ -415,12 +440,14 @@
         private GroupBox groupBox2;
         private Label label9;
         private Button btnEliminar;
-        private ComboBox cmbEliminar;
         private Label label10;
         private GroupBox groupBox3;
         private Button btnBorrador;
         private Label label6;
         private TextBox txtIdCliente;
         private TextBox txtModificarApellido;
+        private Button btnAgregar;
+        private TextBox txtEliminarId;
+        private Button btnSalir;
     }
 }

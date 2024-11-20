@@ -16,6 +16,7 @@ namespace UI
     {
         private MascotaBusiness mascotaBusiness = new MascotaBusiness();
         private ClienteBusiness clienteBusiness = new ClienteBusiness();
+        private List<Mascota> listaMascota = new List<Mascota>();
         public FrmMascota()
         {
             InitializeComponent();
@@ -98,9 +99,9 @@ namespace UI
         }
         private void LimpiarCampos()
         {
-            txtNombre.Clear();
-            txtRaza.Clear();
-            txtEspecie.Clear();
+            txtNombre.Text = string.Empty;
+            txtRaza.Text = string.Empty;
+            txtEspecie.Text = string.Empty;
             dtpFecha.Value = DateTime.Now;
         }
         private void MostrarMascotas()
@@ -113,9 +114,9 @@ namespace UI
         }
         private void LimpiarCamposModificar()
         {
-            txtModificarNombre.Clear();
-            txtModificarRaza.Clear();
-            txtModificarEspecie.Clear();
+            txtModificarNombre.Text = string.Empty;
+            txtModificarRaza.Text = string.Empty;
+            txtModificarEspecie.Text = string.Empty;
             dtpModificarFecha.Value = DateTime.Now;
         }
 
@@ -149,6 +150,46 @@ namespace UI
                 }
 
 
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBorrador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Mascota mascota = new Mascota();
+                mascota.Nombre = txtNombre.Text;
+                mascota.Especie = txtEspecie.Text;
+                mascota.Raza = txtRaza.Text;
+                mascota.FechaNacimiento = dtpFecha.Value.Date;
+                Cliente cliente = new Cliente();
+                cliente.ID = Convert.ToInt32(cmbCliente.SelectedValue);
+                mascota.ClienteId = cliente;
+                listaMascota.Add(mascota);
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                mascotaBusiness.GuardarMascotasMultiples(listaMascota);
+                listaMascota = new List<Mascota>();
+                MostrarMascotas();
+                LimpiarCampos();
+                MessageBox.Show("Mascota agregada con exito");
             }
             catch (Exception ex)
             {

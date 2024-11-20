@@ -312,7 +312,7 @@
             Controls.Add(groupBox1);
             Name = "FrmVeterinario";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmVeterinario";
+            Text = "Veterinario";
             WindowState = FormWindowState.Maximized;
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvVeterinarios).EndInit();

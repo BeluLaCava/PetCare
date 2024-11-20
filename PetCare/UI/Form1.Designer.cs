@@ -132,10 +132,10 @@
             // 
             lblEmpleadoNombre.AutoSize = true;
             lblEmpleadoNombre.BackColor = Color.Transparent;
-            lblEmpleadoNombre.Font = new Font("Microsoft Sans Serif", 15.75F);
-            lblEmpleadoNombre.Location = new Point(259, 171);
+            lblEmpleadoNombre.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblEmpleadoNombre.Location = new Point(320, 218);
             lblEmpleadoNombre.Name = "lblEmpleadoNombre";
-            lblEmpleadoNombre.Size = new Size(70, 25);
+            lblEmpleadoNombre.Size = new Size(86, 31);
             lblEmpleadoNombre.TabIndex = 3;
             lblEmpleadoNombre.Text = "label1";
             // 
@@ -146,12 +146,12 @@
             dgvCitasHoy.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCitasHoy.BackgroundColor = SystemColors.ButtonFace;
             dgvCitasHoy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCitasHoy.Location = new Point(259, 257);
+            dgvCitasHoy.Location = new Point(320, 325);
             dgvCitasHoy.MultiSelect = false;
             dgvCitasHoy.Name = "dgvCitasHoy";
             dgvCitasHoy.ReadOnly = true;
             dgvCitasHoy.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCitasHoy.Size = new Size(889, 415);
+            dgvCitasHoy.Size = new Size(1164, 619);
             dgvCitasHoy.TabIndex = 5;
             // 
             // lblTitulo
@@ -159,7 +159,7 @@
             lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.Transparent;
             lblTitulo.Font = new Font("Microsoft Sans Serif", 15.75F);
-            lblTitulo.Location = new Point(259, 218);
+            lblTitulo.Location = new Point(320, 279);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(169, 25);
             lblTitulo.TabIndex = 6;
@@ -170,7 +170,7 @@
             lblVeterinaria.AutoSize = true;
             lblVeterinaria.BackColor = Color.Transparent;
             lblVeterinaria.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblVeterinaria.Location = new Point(515, 42);
+            lblVeterinaria.Location = new Point(763, 76);
             lblVeterinaria.Name = "lblVeterinaria";
             lblVeterinaria.Size = new Size(453, 65);
             lblVeterinaria.TabIndex = 8;
@@ -180,9 +180,9 @@
             // 
             imgCruz.BackColor = Color.Transparent;
             imgCruz.Image = (Image)resources.GetObject("imgCruz.Image");
-            imgCruz.Location = new Point(429, 42);
+            imgCruz.Location = new Point(622, 44);
             imgCruz.Name = "imgCruz";
-            imgCruz.Size = new Size(80, 73);
+            imgCruz.Size = new Size(150, 150);
             imgCruz.SizeMode = PictureBoxSizeMode.StretchImage;
             imgCruz.TabIndex = 9;
             imgCruz.TabStop = false;
