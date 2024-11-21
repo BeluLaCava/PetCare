@@ -12,7 +12,7 @@ namespace DAL
 {
     public class VeterinarioData
     {
-        public static List<Veterinario> ObtenerVeterinario(int veterinarioId)
+        public List<Veterinario> ObtenerVeterinario()
         {
             List<Veterinario> listaVeterinarios = new List<Veterinario>();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
@@ -52,25 +52,30 @@ namespace DAL
             return listaVeterinarios;
         }
 
-        public static List<Veterinario> ObtenerVeterinario()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public void EliminarVeterinario(int id)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
             {
+
                 using (conn)
                 {
                     conn.Open();
+                    string deleteCitasQuery = "DELETE FROM citas WHERE veterinario_id = @id";
+                    using (SqlCommand command = new SqlCommand(deleteCitasQuery, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        command.ExecuteNonQuery();
+                    }
                     SqlCommand cmd = new SqlCommand("DELETE FROM Veterinarios WHERE ID = @id", conn);
                     using (cmd)
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
                     }
+                   
                 }
             }
             catch (Exception ex)

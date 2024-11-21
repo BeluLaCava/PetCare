@@ -109,7 +109,7 @@
             txtEliminarCita.Location = new Point(101, 50);
             txtEliminarCita.Name = "txtEliminarCita";
             txtEliminarCita.Size = new Size(198, 29);
-            txtEliminarCita.TabIndex = 26;
+            txtEliminarCita.TabIndex = 13;
             // 
             // btnEliminarCita
             // 
@@ -117,7 +117,7 @@
             btnEliminarCita.Location = new Point(306, 41);
             btnEliminarCita.Name = "btnEliminarCita";
             btnEliminarCita.Size = new Size(139, 44);
-            btnEliminarCita.TabIndex = 24;
+            btnEliminarCita.TabIndex = 14;
             btnEliminarCita.Text = "Eliminar";
             btnEliminarCita.UseVisualStyleBackColor = true;
             btnEliminarCita.Click += btnEliminarCita_Click;
@@ -160,8 +160,9 @@
             dtpModificarHora.Location = new Point(101, 156);
             dtpModificarHora.MinDate = new DateTime(2024, 11, 18, 0, 0, 0, 0);
             dtpModificarHora.Name = "dtpModificarHora";
+            dtpModificarHora.ShowUpDown = true;
             dtpModificarHora.Size = new Size(198, 29);
-            dtpModificarHora.TabIndex = 19;
+            dtpModificarHora.TabIndex = 10;
             // 
             // txtCita
             // 
@@ -169,7 +170,7 @@
             txtCita.Location = new Point(101, 29);
             txtCita.Name = "txtCita";
             txtCita.Size = new Size(198, 29);
-            txtCita.TabIndex = 25;
+            txtCita.TabIndex = 7;
             // 
             // dtpModificarFecha
             // 
@@ -177,7 +178,7 @@
             dtpModificarFecha.Location = new Point(101, 202);
             dtpModificarFecha.Name = "dtpModificarFecha";
             dtpModificarFecha.Size = new Size(198, 29);
-            dtpModificarFecha.TabIndex = 24;
+            dtpModificarFecha.TabIndex = 11;
             // 
             // label8
             // 
@@ -196,7 +197,7 @@
             cmbModificarVeterinario.Location = new Point(101, 117);
             cmbModificarVeterinario.Name = "cmbModificarVeterinario";
             cmbModificarVeterinario.Size = new Size(198, 29);
-            cmbModificarVeterinario.TabIndex = 22;
+            cmbModificarVeterinario.TabIndex = 9;
             // 
             // label6
             // 
@@ -215,7 +216,7 @@
             cmbModificarMascota.Location = new Point(101, 75);
             cmbModificarMascota.Name = "cmbModificarMascota";
             cmbModificarMascota.Size = new Size(198, 29);
-            cmbModificarMascota.TabIndex = 20;
+            cmbModificarMascota.TabIndex = 8;
             // 
             // label9
             // 
@@ -253,7 +254,7 @@
             btnModificar.Location = new Point(306, 253);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(143, 42);
-            btnModificar.TabIndex = 9;
+            btnModificar.TabIndex = 12;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
@@ -284,7 +285,7 @@
             btnConfirmar.Location = new Point(157, 211);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(143, 42);
-            btnConfirmar.TabIndex = 20;
+            btnConfirmar.TabIndex = 5;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = true;
             btnConfirmar.Click += btnConfirmar_Click;
@@ -295,7 +296,7 @@
             btnBorrador.Location = new Point(8, 211);
             btnBorrador.Name = "btnBorrador";
             btnBorrador.Size = new Size(143, 42);
-            btnBorrador.TabIndex = 19;
+            btnBorrador.TabIndex = 4;
             btnBorrador.Text = "Agregar Borrador";
             btnBorrador.UseVisualStyleBackColor = true;
             btnBorrador.Click += btnBorrador_Click;
@@ -308,8 +309,9 @@
             dtpHora.Location = new Point(101, 109);
             dtpHora.MinDate = new DateTime(2024, 11, 18, 0, 0, 0, 0);
             dtpHora.Name = "dtpHora";
+            dtpHora.ShowUpDown = true;
             dtpHora.Size = new Size(198, 29);
-            dtpHora.TabIndex = 18;
+            dtpHora.TabIndex = 2;
             // 
             // dtpFecha
             // 
@@ -317,7 +319,7 @@
             dtpFecha.Location = new Point(101, 151);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(198, 29);
-            dtpFecha.TabIndex = 17;
+            dtpFecha.TabIndex = 3;
             // 
             // label2
             // 
@@ -356,7 +358,7 @@
             cmbVeterinario.Location = new Point(101, 66);
             cmbVeterinario.Name = "cmbVeterinario";
             cmbVeterinario.Size = new Size(198, 29);
-            cmbVeterinario.TabIndex = 10;
+            cmbVeterinario.TabIndex = 1;
             // 
             // cmbMascota
             // 
@@ -365,7 +367,7 @@
             cmbMascota.Location = new Point(101, 19);
             cmbMascota.Name = "cmbMascota";
             cmbMascota.Size = new Size(198, 29);
-            cmbMascota.TabIndex = 9;
+            cmbMascota.TabIndex = 0;
             // 
             // label4
             // 
@@ -383,7 +385,7 @@
             btnGuardar.Location = new Point(306, 211);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(143, 42);
-            btnGuardar.TabIndex = 0;
+            btnGuardar.TabIndex = 6;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
@@ -394,7 +396,7 @@
             btnSalir.Location = new Point(633, 697);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(139, 44);
-            btnSalir.TabIndex = 27;
+            btnSalir.TabIndex = 15;
             btnSalir.Text = "Cerrar";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;

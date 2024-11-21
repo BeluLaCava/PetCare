@@ -15,7 +15,7 @@ namespace UI
     public partial class FrmCita : Form
     {
         private MascotaBusiness mascotaBusiness = new MascotaBusiness();
-        //private VeterinarioBusiness veterinarioBusiness = new VeterinarioBusiness();
+        private VeterinarioBusiness veterinarioBusiness = new VeterinarioBusiness();
         private CitaBusiness citaBusiness = new CitaBusiness();
         private Cita cita;
         private List<Cita> listaCita = new List<Cita>();
@@ -36,19 +36,26 @@ namespace UI
             cmbModificarMascota.ValueMember = "ID";
         }
 
-        //private void ObtenerVeterinario()
-        //{
-        //    List<Veterinario> listaVeterinario = veterinarioBusiness.ObtenerVeterinario();
+        private void ObtenerVeterinario()
+        {
+            List<Veterinario> listaVeterinario = veterinarioBusiness.ObtenerVeterinario();
 
-        //    cmbMascota.DataSource = listaVeterinario;
-        //    cmbMascota.DisplayMember = "Nombre";
-        //    cmbMascota.ValueMember = "ID";
-        //}
+            cmbVeterinario.DataSource = listaVeterinario;
+            cmbVeterinario.DisplayMember = "Nombre";
+            cmbVeterinario.ValueMember = "ID";
+
+            cmbModificarVeterinario.DataSource = listaVeterinario;
+            cmbModificarVeterinario.DisplayMember = "Nombre";
+            cmbModificarVeterinario.ValueMember = "ID";
+        }
         private void MostrarCitas()
         {
             List<Cita> listaCita = citaBusiness.ObtenerCitas();
             dgvCitas.DataSource = null;
             dgvCitas.DataSource = listaCita;
+
+            dgvCitas.Columns["VeterinarioID"].Visible = false;
+            dgvCitas.Columns["MascotaID"].Visible = false;
 
         }
 
@@ -81,13 +88,14 @@ namespace UI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+           
             this.Close();
         }
 
         private void FrmCita_Load(object sender, EventArgs e)
         {
             ObtenerMascotas();
-            //ObtenerVeterinario();
+            ObtenerVeterinario();
             MostrarCitas();
         }
 
@@ -118,7 +126,7 @@ namespace UI
         private void LimpiarCampos()
         {
             dtpFecha.Value = DateTime.Now;
-            txtHora.Text = string.Empty;
+          
         }
 
         private void btnEliminarCita_Click(object sender, EventArgs e)
@@ -192,6 +200,7 @@ namespace UI
                         cmbModificarVeterinario.SelectedValue = seleccionado.VeterinarioID.ID;
                         dtpModificarHora.Value = DateTime.Today + seleccionado.Hora;
                         dtpModificarFecha.Value = seleccionado.Fecha;
+                        txtEliminarCita.Text = seleccionado.ID.ToString();
                     }
 
                 }

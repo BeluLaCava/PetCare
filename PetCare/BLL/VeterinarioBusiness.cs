@@ -11,9 +11,9 @@ namespace BLL
 {
     public class VeterinarioBusiness
     {
-        private VeterinarioData veterinarioDAL = new VeterinarioData();
+        private VeterinarioData veterinarioData = new VeterinarioData();
 
-        public void Guardar(Veterinario veterinario)
+        public void GuardarVeterinario(Veterinario veterinario)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace BLL
                     if (string.IsNullOrEmpty(veterinario.HorarioTrabajo))
                         throw new Exception("El horario de trabajo no puede estar vacío.");
 
-                    veterinarioDAL.GuardarVeterinario(veterinario);
+                    veterinarioData.GuardarVeterinario(veterinario);
                     trx.Complete();
                 }
             }
@@ -50,7 +50,7 @@ namespace BLL
 
                     foreach (Veterinario veterinarios in veterinario)
                     {
-                        Guardar(veterinarios);
+                        GuardarVeterinario(veterinarios);
                     }
                     trx.Complete();
                 }
@@ -68,7 +68,7 @@ namespace BLL
         {
             try
             {
-                return VeterinarioData.ObtenerVeterinario();
+                return veterinarioData.ObtenerVeterinario();
             }
             catch (Exception ex)
             {
@@ -76,13 +76,14 @@ namespace BLL
                 throw;
             }
         }
-        public void ModificarVeterinario(int id, string nombre, string especialidad, string horariodetrabajo)
+        public void ModificarVeterinario(Veterinario veterinarios)
         {
             try
             {
+                Veterinario veterinario = veterinarioData.GetById(veterinarios.ID);
                 using (TransactionScope trx = new TransactionScope())
                 {
-                    Veterinario veterinario = veterinarioDAL.GetById(id);
+                  
                     if (veterinario == null)
                     {
                         throw new Exception("El veterinario no existe");
@@ -99,9 +100,7 @@ namespace BLL
                     {
                         throw new Exception("El horario de trabajo no puede estar vacío.");
                     }
-                    veterinario.Nombre = nombre;
-                    veterinario.Especialidad = especialidad;
-                    veterinario.HorarioTrabajo = horariodetrabajo;
+                    veterinarioData.ModificarVeterinario(veterinarios);
 
                     trx.Complete();
                 }
@@ -117,14 +116,15 @@ namespace BLL
         {
             try
             {
+                Veterinario veterinario = veterinarioData.GetById(id);
                 using (TransactionScope trx = new TransactionScope())
                 {
-                    Veterinario veterinario = veterinarioDAL.GetById(id);
+                   
                     if (veterinario == null)
                     {
                         throw new Exception("El Veterinario no existe");
                     }
-                    veterinarioDAL.EliminarVeterinario(id);
+                    veterinarioData.EliminarVeterinario(id);
                     trx.Complete();
                 }
             }
