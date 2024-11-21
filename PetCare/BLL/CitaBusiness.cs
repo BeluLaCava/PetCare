@@ -78,7 +78,7 @@ namespace BLL
 
             if (cita.Hora < horaApertura || cita.Hora > horaCierre)
             {
-                throw new Exception("\"La hora ingresada no es válida. Debe estar entre 07:00 y 19:00.");
+                throw new Exception("La hora ingresada no es válida. Debe estar entre 07:00 y 19:00.");
             }
         }
 
@@ -98,8 +98,13 @@ namespace BLL
         {
             try
             {
+                Cita citas = citaData.GetById(cita.ID);
                 using (TransactionScope trx = new TransactionScope())
                 {
+                    if(citas == null)
+                    {
+                        throw new Exception("La cita no existe");
+                    }
                     Validacion(cita);
                     citaData.ModificarCita(cita);
                     trx.Complete();
@@ -115,8 +120,13 @@ namespace BLL
         {
             try
             {
+                Cita citas = citaData.GetById(idEliminar);
                 using (TransactionScope trx = new TransactionScope())
                 {
+                    if (citas == null)
+                    {
+                        throw new Exception("La cita no existe");
+                    }
                     citaData.EliminarCita(idEliminar);
                     trx.Complete();
                 }

@@ -43,27 +43,7 @@ namespace DAL
          }
       }
 
-      //public bool ExisteCliente(int clienteID)
-      //{
-      //   SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
-      //   try
-      //   {
-
-      //      using (conn)
-      //      {
-      //         conn.Open();
-      //         SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Clientes WHERE ID = @clienteID", conn);
-      //         cmd.Parameters.AddWithValue("@clienteID", clienteID);
-
-      //         int count = (int)cmd.ExecuteScalar();
-      //         return count > 0;
-      //      }
-      //   }
-      //   catch (Exception ex)
-      //   {
-      //      throw new Exception("Error al verificar el cliente: " + ex.Message);
-      //   }
-      //}
+    
       public List<Mascota> ObtenerMascotas()
       {
 
@@ -169,13 +149,20 @@ namespace DAL
             using (conn)
          {
                conn.Open();
-               string query = "DELETE FROM Mascotas WHERE ID = @id";
+                    string deleteCitasQuery = "DELETE FROM citas WHERE mascota_id = @id";
+                    using (SqlCommand command = new SqlCommand(deleteCitasQuery, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        command.ExecuteNonQuery();
+                    }
+                    string query = "DELETE FROM Mascotas WHERE ID = @id";
                using (SqlCommand command = new SqlCommand(query, conn))
                {
                   command.Parameters.AddWithValue("@id", id);
                   command.ExecuteNonQuery();
                }
-            }
+                   
+                }
          }
          catch (Exception ex)
          {

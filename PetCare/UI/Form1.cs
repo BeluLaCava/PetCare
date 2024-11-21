@@ -6,6 +6,7 @@ namespace UI
     public partial class Form1 : Form
     {
         private Empleado empleado;
+        private CitaBusiness citaBusiness = new CitaBusiness();
        
         public Form1(Empleado empleadoAutenticado)
         {
@@ -16,7 +17,13 @@ namespace UI
         }
         private void MostrarCitasHoy()
         {
-           
+            List<Cita> listaCita = citaBusiness.ObtenerCitas();
+
+            dgvCitasHoy.DataSource = null;
+            dgvCitasHoy.DataSource = listaCita;
+
+            dgvCitasHoy.Columns["VeterinarioID"].Visible = false;
+            dgvCitasHoy.Columns["MascotaID"].Visible = false;
         }
         private void OcultarControles()
         {
@@ -61,6 +68,7 @@ namespace UI
         private void FrmVeterinario_FormClosed(object sender, FormClosedEventArgs e)
         {
             MostrarControles();
+            MostrarCitasHoy();
         }
 
         private void agregarClienteToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -143,6 +151,7 @@ namespace UI
         private void FrmMascota_FormClosed(object sender, FormClosedEventArgs e)
         {
             MostrarControles();
+            MostrarCitasHoy();
         }
         private void agendarCitaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -169,6 +178,7 @@ namespace UI
         private void FrmCita_FormClosed(object sender, FormClosedEventArgs e)
         {
             MostrarControles();
+            MostrarCitasHoy();
         }
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
