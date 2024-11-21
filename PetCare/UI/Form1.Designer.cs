@@ -37,7 +37,6 @@
             agregarProductoToolStripMenuItem = new ToolStripMenuItem();
             servicioToolStripMenuItem = new ToolStripMenuItem();
             agendarCitaToolStripMenuItem = new ToolStripMenuItem();
-            comprarProductoToolStripMenuItem = new ToolStripMenuItem();
             facturarToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             lblEmpleadoNombre = new Label();
@@ -96,7 +95,7 @@
             // 
             // servicioToolStripMenuItem
             // 
-            servicioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agendarCitaToolStripMenuItem, comprarProductoToolStripMenuItem, facturarToolStripMenuItem });
+            servicioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agendarCitaToolStripMenuItem, facturarToolStripMenuItem });
             servicioToolStripMenuItem.Name = "servicioToolStripMenuItem";
             servicioToolStripMenuItem.Size = new Size(60, 20);
             servicioToolStripMenuItem.Text = "Servicio";
@@ -104,20 +103,14 @@
             // agendarCitaToolStripMenuItem
             // 
             agendarCitaToolStripMenuItem.Name = "agendarCitaToolStripMenuItem";
-            agendarCitaToolStripMenuItem.Size = new Size(173, 22);
+            agendarCitaToolStripMenuItem.Size = new Size(143, 22);
             agendarCitaToolStripMenuItem.Text = "Agendar Cita";
             agendarCitaToolStripMenuItem.Click += agendarCitaToolStripMenuItem_Click;
-            // 
-            // comprarProductoToolStripMenuItem
-            // 
-            comprarProductoToolStripMenuItem.Name = "comprarProductoToolStripMenuItem";
-            comprarProductoToolStripMenuItem.Size = new Size(173, 22);
-            comprarProductoToolStripMenuItem.Text = "Comprar Producto";
             // 
             // facturarToolStripMenuItem
             // 
             facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
-            facturarToolStripMenuItem.Size = new Size(173, 22);
+            facturarToolStripMenuItem.Size = new Size(143, 22);
             facturarToolStripMenuItem.Text = "Facturar";
             facturarToolStripMenuItem.Click += facturarToolStripMenuItem_Click;
             // 
@@ -223,7 +216,6 @@
         private ToolStripMenuItem agregarProductoToolStripMenuItem;
         private ToolStripMenuItem servicioToolStripMenuItem;
         private ToolStripMenuItem agendarCitaToolStripMenuItem;
-        private ToolStripMenuItem comprarProductoToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
         private Label lblEmpleadoNombre;
         private DataGridView dgvCitasHoy;

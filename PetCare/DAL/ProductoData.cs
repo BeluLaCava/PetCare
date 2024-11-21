@@ -12,7 +12,7 @@ namespace DAL
 {
     public  class ProductoData
     {
-        public void GuardarProducto(Producto prod)
+        public void GuardarProducto(Producto producto)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
             try
@@ -25,10 +25,10 @@ namespace DAL
                                                     VALUES (@nombre, @descripcion, @precio, @stock)", conn);
                     using (cmd)
                     {
-                        cmd.Parameters.AddWithValue("@nombre", prod.Nombre);
-                        cmd.Parameters.AddWithValue("@descipcion", prod.Descripcion);
-                        cmd.Parameters.AddWithValue("@precio", prod.Precio);
-                        cmd.Parameters.AddWithValue("@stock", prod.Stock);                        
+                        cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                        cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                        cmd.Parameters.AddWithValue("@precio", producto.Precio);
+                        cmd.Parameters.AddWithValue("@stock", producto.Stock);                        
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -49,7 +49,7 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();                    
-                    using (SqlCommand cmd = new SqlCommand("SELECT nombre, descripcion, precio, stock, ID FROM Productos", conn))
+                    using (SqlCommand cmd = new SqlCommand("SELECT ID, nombre, descripcion, precio, stock FROM Productos", conn))
                     {
                         
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -79,14 +79,15 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE Productos SET nombre = @nombre, descripcion = @descripcion, precio = @precio, stock = @stock where ID = @idProducto", conn);
+                    SqlCommand cmd = new SqlCommand(@"UPDATE Productos SET nombre = @nombre, descripcion = @descripcion, 
+                                                    precio = @precio, stock = @stock where ID = @idProducto", conn);
                     using (cmd)
                     {
+                        cmd.Parameters.AddWithValue("@idProducto", producto.ID);
                         cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
                         cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
                         cmd.Parameters.AddWithValue("@precio", producto.Precio);
                         cmd.Parameters.AddWithValue("@stock", producto.Stock);
-                        cmd.Parameters.AddWithValue("@idProducto", producto.ID);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -112,6 +113,41 @@ namespace DAL
                         cmd.ExecuteNonQuery();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+        public Producto GetById(int id)
+        {
+            try
+            {
+
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PetCareDB"].ConnectionString);
+                using (conn)
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Productos WHERE ID = @id";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    using (cmd)
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        using (reader)
+                        {
+                            while (reader.Read())
+                            {
+                                Producto producto = ProductoMapper.Map(reader);
+                                return producto;
+
+                            }
+                        }
+                    }
+                }
+                return null;
+
             }
             catch (Exception ex)
             {
