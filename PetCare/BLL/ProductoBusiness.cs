@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAL;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace BLL
     public class ProductoBusiness
     {
         private List<Producto> productos; // Simulando una base de datos en memoria
+        ProductoData productoData  = new ProductoData();    
 
         public ProductoBusiness()
         {
@@ -59,7 +61,7 @@ namespace BLL
         // Método para obtener todos los productos (opcional, para llenar el ComboBox)
         public List<Producto> ObtenerProductos()
         {
-            return productos;
+            return productoData.ObtenerProducto();
         }
     }
 }
