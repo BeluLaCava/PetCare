@@ -49,6 +49,8 @@ namespace DAL
             {
                 using (conn)
                 {
+                    ProductoData productoData = new ProductoData();
+                    ClienteData clienteData = new ClienteData();
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("SELECT fecha, total, cliente_id, producto_id, cantidad,ID FROM Facturas", conn);
                     using (cmd)
@@ -57,8 +59,13 @@ namespace DAL
                         using (reader)
                         {
                             while (reader.Read())
-                            {
-                                Factura factura = FacturaMapper.Map(reader);
+                            {                                
+                                int productoId = Convert.ToInt32(reader["producto_id"].ToString());
+                                int clienteId = Convert.ToInt32(reader["cliente_id"].ToString());
+                                Producto prod = productoData.GetById(productoId);
+                                Cliente cli = clienteData.GetById(clienteId);
+
+                                Factura factura = FacturaMapper.Map(reader,prod,cli);
                                 listaFacturas.Add(factura);
                             }
                         }
@@ -80,13 +87,13 @@ namespace DAL
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE FACTURAS SET cantidad = @cantidad, total = @total, cliente_id = @producto_id where ID = @idFactura", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE FACTURAS SET cantidad = @cantidad, total = @total, cliente_id = @cliente_id,producto_id = @producto_id where ID = @idFactura", conn);
                     using (cmd)
                     {                        
                         cmd.Parameters.AddWithValue("@total", factura.Total);
                         cmd.Parameters.AddWithValue("@cantidad", factura.Cantidad);
                         cmd.Parameters.AddWithValue("@cliente_id", factura.Cliente.ID);
-                        cmd.Parameters.AddWithValue("@producto_id", factura.Producto.ID);
+                        cmd.Parameters.AddWithValue("@producto_id", factura.Producto.ID);                        
                         cmd.Parameters.AddWithValue("@idFactura", factura.ID);
                         cmd.ExecuteNonQuery();
                     }
@@ -131,14 +138,20 @@ namespace DAL
                     string query = "SELECT fecha, total, cliente_id, producto_id, cantidad,ID from facturas where id = @id";
                     using (SqlCommand command = new SqlCommand(query, con))
                     {
+
+                        ProductoData productoData = new ProductoData();
+                        ClienteData clienteData = new ClienteData();
                         command.Parameters.AddWithValue("@id", id);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                Factura fac = FacturaMapper.Map(reader);
-
-                                return fac;
+                                int productoId = Convert.ToInt32(reader["producto_id"].ToString());
+                                int clienteId = Convert.ToInt32(reader["cliente_id"].ToString());
+                                Producto prod = productoData.GetById(productoId);
+                                Cliente cli = clienteData.GetById(clienteId);
+                                Factura factura = FacturaMapper.Map(reader, prod, cli);                                
+                                return factura;
                             }
                         }
                     }
