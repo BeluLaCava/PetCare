@@ -14,6 +14,12 @@ namespace BLL
 
         ProductoData productoData = new ProductoData();
 
+
+        public Producto obtenerProducto(int id)
+        {
+            return productoData.GetById(id);
+        }
+
         public void GuardarProductos(Producto producto)
         {
             try
