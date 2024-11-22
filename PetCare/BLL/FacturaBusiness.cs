@@ -46,7 +46,8 @@ namespace BLL
 
             try
             {
-
+                Factura fact = facturaData.ObtenerPorId(fac.ID);
+                if(fact == null) throw new ArgumentException("No existe la factura seleccionada por Id.");
                 if (fac == null) throw new ArgumentNullException("La factura no puede ser nula.");
                 if (fac.Cantidad <= 0) throw new ArgumentException("La cantidad debe ser mayor a cero.");
                 if (fac.Producto == null || fac.Producto.ID <= 0)

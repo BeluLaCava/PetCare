@@ -10,16 +10,16 @@ namespace Mapper
 {
     public class FacturaMapper
     {
-        public static Factura Map(SqlDataReader reader)
+        public static Factura Map(SqlDataReader reader,Producto prod, Cliente cli)
         {
             Factura factura = new Factura();
             {
                 factura.Fecha = reader.GetDateTime(0);
                 factura.Total = reader.GetDecimal(1);
-                factura.Cliente = new Cliente();
-                factura.Cliente.ID = reader.GetInt32(2);
-                factura.Producto = new Producto();
-                factura.Producto.ID = reader.GetInt32(3);
+                factura.Cliente = cli;
+                //factura.Cliente.ID = reader.GetInt32(2);
+                factura.Producto = prod;
+                //factura.Producto.ID = reader.GetInt32(3);
                 factura.Cantidad = reader.GetInt32(4);
                 factura.ID = reader.GetInt32(5);
 
