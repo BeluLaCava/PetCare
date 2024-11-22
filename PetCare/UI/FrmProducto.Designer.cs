@@ -239,7 +239,7 @@
             txtModificarDescripcion.Font = new Font("Segoe UI", 12F);
             txtModificarDescripcion.Location = new Point(161, 107);
             txtModificarDescripcion.Name = "txtModificarDescripcion";
-            txtModificarDescripcion.Size = new Size(143, 29);
+            txtModificarDescripcion.Size = new Size(243, 29);
             txtModificarDescripcion.TabIndex = 9;
             // 
             // btnModificar
@@ -308,7 +308,7 @@
             txtDescripcion.Font = new Font("Segoe UI", 12F);
             txtDescripcion.Location = new Point(161, 79);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(143, 29);
+            txtDescripcion.Size = new Size(243, 29);
             txtDescripcion.TabIndex = 1;
             // 
             // txtPrecio

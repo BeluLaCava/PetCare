@@ -29,7 +29,7 @@ namespace BLL
                     throw new ArgumentException("El producto es inválido o no está seleccionado.");
                 if (fac.Cliente == null || fac.Cliente.ID <= 0)
                     throw new ArgumentException("El cliente es inválido o no está seleccionado.");
-                if (fac.Fecha == default)
+                if (fac.Fecha != DateTime.Today)
                     throw new ArgumentException("La fecha de la factura no es válida.");
 
                 using (TransactionScope t = new TransactionScope())

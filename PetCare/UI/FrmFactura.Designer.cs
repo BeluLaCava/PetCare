@@ -75,7 +75,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(245, 297);
+            btnAgregar.Location = new Point(245, 279);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(148, 47);
             btnAgregar.TabIndex = 2;
@@ -85,11 +85,15 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(6, 22);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(735, 444);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(799, 444);
             dataGridView1.TabIndex = 3;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // cmbProducto
             // 
@@ -101,7 +105,7 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(245, 203);
+            btnModificar.Location = new Point(245, 221);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(148, 55);
             btnModificar.TabIndex = 5;
@@ -111,9 +115,9 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(196, 56);
+            btnEliminar.Location = new Point(188, 42);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(134, 48);
+            btnEliminar.Size = new Size(139, 48);
             btnEliminar.TabIndex = 6;
             btnEliminar.Text = "Eliminar Factura";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -268,7 +272,7 @@
             // 
             // txtIdEliminar
             // 
-            txtIdEliminar.Location = new Point(20, 67);
+            txtIdEliminar.Location = new Point(20, 61);
             txtIdEliminar.Name = "txtIdEliminar";
             txtIdEliminar.Size = new Size(139, 29);
             txtIdEliminar.TabIndex = 23;
@@ -277,9 +281,9 @@
             // 
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Font = new Font("Segoe UI", 12F);
-            groupBox1.Location = new Point(465, 12);
+            groupBox1.Location = new Point(560, 109);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(747, 472);
+            groupBox1.Size = new Size(811, 472);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             groupBox1.Text = "Facturas";
@@ -298,9 +302,9 @@
             groupBox2.Controls.Add(txtCantidad);
             groupBox2.Controls.Add(label6);
             groupBox2.Font = new Font("Segoe UI", 12F);
-            groupBox2.Location = new Point(28, 12);
+            groupBox2.Location = new Point(123, 109);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(408, 350);
+            groupBox2.Size = new Size(408, 338);
             groupBox2.TabIndex = 26;
             groupBox2.TabStop = false;
             groupBox2.Text = "Cargar factura";
@@ -317,9 +321,9 @@
             groupBox3.Controls.Add(txtIdMod);
             groupBox3.Controls.Add(label7);
             groupBox3.Font = new Font("Segoe UI", 12F);
-            groupBox3.Location = new Point(28, 380);
+            groupBox3.Location = new Point(123, 453);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(408, 269);
+            groupBox3.Size = new Size(408, 293);
             groupBox3.TabIndex = 27;
             groupBox3.TabStop = false;
             groupBox3.Text = "Editar factura";
@@ -330,9 +334,9 @@
             groupBox4.Controls.Add(txtIdEliminar);
             groupBox4.Controls.Add(label11);
             groupBox4.Font = new Font("Segoe UI", 12F);
-            groupBox4.Location = new Point(465, 490);
+            groupBox4.Location = new Point(123, 752);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(346, 130);
+            groupBox4.Size = new Size(408, 112);
             groupBox4.TabIndex = 28;
             groupBox4.TabStop = false;
             groupBox4.Text = "Eliminar factura";
@@ -340,7 +344,7 @@
             // btnCerrar
             // 
             btnCerrar.Font = new Font("Segoe UI", 12F);
-            btnCerrar.Location = new Point(854, 546);
+            btnCerrar.Location = new Point(560, 802);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(141, 48);
             btnCerrar.TabIndex = 25;
@@ -352,7 +356,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1294, 675);
+            ClientSize = new Size(1358, 825);
             Controls.Add(btnCerrar);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);

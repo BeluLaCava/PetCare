@@ -54,12 +54,13 @@ namespace UI
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = facturaBusiness.obtenerFacturas();
+            dataGridView1.Columns["Producto"].Visible = false;
+            dataGridView1.Columns["Cliente"].Visible = false;
         }
 
 
         private void FrmFactura_Load(object sender, EventArgs e)
         {
-
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -86,9 +87,9 @@ namespace UI
 
                 Producto prod = productoBusiness.obtenerProducto(fac.Producto.ID);
                 decimal valor = 0;
-                if (prod !=null)
+                if (prod != null)
                 {
-                    valor = prod.Precio * fac.Cantidad;                    
+                    valor = prod.Precio * fac.Cantidad;
                 }
                 label6.Text = valor.ToString();
                 fac.Total = valor;
@@ -126,7 +127,7 @@ namespace UI
                 }
                 label6.Text = valor.ToString();
 
-                fac.Total = valor;  
+                fac.Total = valor;
 
                 facturaBusiness.modificarFactura(fac);
                 updateDataGridView();
@@ -160,6 +161,33 @@ namespace UI
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Factura facturaSeleccionado = (Factura)dataGridView1.SelectedRows[0].DataBoundItem;
+                    if (facturaSeleccionado != null)
+                    {
+                        txtIdMod.Text = facturaSeleccionado.ID.ToString();
+                        txtModCant.Text = facturaSeleccionado.Cantidad.ToString(); 
+                        txtIdEliminar.Text = facturaSeleccionado.ID.ToString();
+                        cmbModClie.SelectedValue = facturaSeleccionado.Cliente.ID;
+                        cmbModProd.SelectedValue = facturaSeleccionado.Producto.ID;
+                    }
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
