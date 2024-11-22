@@ -83,6 +83,7 @@ namespace UI
                 fac.Cliente = new Cliente();
                 fac.Cliente.ID = Convert.ToInt32(cmbCliente.SelectedValue);
                 fac.Fecha = DateTime.Parse(dateFechaValidez.Text);
+
                 Producto prod = productoBusiness.obtenerProducto(fac.Producto.ID);
                 decimal valor = 0;
                 if (prod !=null)
@@ -91,6 +92,7 @@ namespace UI
                 }
                 label6.Text = valor.ToString();
                 fac.Total = valor;
+
                 facturaBusiness.agregarFactura(fac);
                 updateDataGridView();
                 MessageBox.Show("Factura agregada");
@@ -115,6 +117,7 @@ namespace UI
                 fac.Cliente = new Cliente();
                 fac.Cliente.ID = Convert.ToInt32(cmbModClie.SelectedValue);
                 fac.Cantidad = Convert.ToInt32(txtModCant.Text);
+
                 Producto prod = productoBusiness.obtenerProducto(fac.Producto.ID);
                 decimal valor = 0;
                 if (prod != null)
@@ -122,7 +125,9 @@ namespace UI
                     valor = prod.Precio * fac.Cantidad;
                 }
                 label6.Text = valor.ToString();
+
                 fac.Total = valor;  
+
                 facturaBusiness.modificarFactura(fac);
                 updateDataGridView();
                 MessageBox.Show("Factura modificada");
@@ -132,7 +137,7 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
 
         }
 
@@ -150,6 +155,11 @@ namespace UI
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
