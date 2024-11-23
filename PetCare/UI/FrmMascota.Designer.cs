@@ -74,9 +74,11 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(dgvMascotas);
-            groupBox4.Location = new Point(538, 50);
+            groupBox4.Location = new Point(615, 67);
+            groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(915, 668);
+            groupBox4.Padding = new Padding(3, 4, 3, 4);
+            groupBox4.Size = new Size(1046, 891);
             groupBox4.TabIndex = 9;
             groupBox4.TabStop = false;
             groupBox4.Text = "Mascotas";
@@ -87,13 +89,14 @@
             dgvMascotas.AllowUserToDeleteRows = false;
             dgvMascotas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMascotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMascotas.Location = new Point(6, 22);
+            dgvMascotas.Location = new Point(7, 29);
+            dgvMascotas.Margin = new Padding(3, 4, 3, 4);
             dgvMascotas.MultiSelect = false;
             dgvMascotas.Name = "dgvMascotas";
             dgvMascotas.ReadOnly = true;
             dgvMascotas.RowHeadersWidth = 51;
             dgvMascotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMascotas.Size = new Size(903, 640);
+            dgvMascotas.Size = new Size(1032, 853);
             dgvMascotas.TabIndex = 4;
             dgvMascotas.SelectionChanged += dgvMascotas_SelectionChanged;
             // 
@@ -102,9 +105,11 @@
             groupBox3.Controls.Add(txtEliminarId);
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(btnEliminar);
-            groupBox3.Location = new Point(73, 724);
+            groupBox3.Location = new Point(83, 965);
+            groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(437, 109);
+            groupBox3.Padding = new Padding(3, 4, 3, 4);
+            groupBox3.Size = new Size(499, 145);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Eliminar Mascota";
@@ -112,27 +117,29 @@
             // txtEliminarId
             // 
             txtEliminarId.Font = new Font("Segoe UI", 12F);
-            txtEliminarId.Location = new Point(96, 48);
+            txtEliminarId.Location = new Point(110, 64);
+            txtEliminarId.Margin = new Padding(3, 4, 3, 4);
             txtEliminarId.Name = "txtEliminarId";
-            txtEliminarId.Size = new Size(154, 29);
+            txtEliminarId.Size = new Size(175, 34);
             txtEliminarId.TabIndex = 13;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F);
-            label10.Location = new Point(22, 51);
+            label10.Location = new Point(25, 68);
             label10.Name = "label10";
-            label10.Size = new Size(68, 21);
+            label10.Size = new Size(86, 28);
             label10.TabIndex = 22;
             label10.Text = "Mascota";
             // 
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Segoe UI", 12F);
-            btnEliminar.Location = new Point(275, 40);
+            btnEliminar.Location = new Point(314, 53);
+            btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(143, 42);
+            btnEliminar.Size = new Size(163, 56);
             btnEliminar.TabIndex = 14;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -153,9 +160,11 @@
             groupBox2.Controls.Add(txtModificarNombre);
             groupBox2.Controls.Add(txtModificarRaza);
             groupBox2.Controls.Add(btnModificar);
-            groupBox2.Location = new Point(73, 370);
+            groupBox2.Location = new Point(83, 493);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(437, 348);
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(499, 464);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Modificar Mascota";
@@ -163,18 +172,19 @@
             // txtModificarID
             // 
             txtModificarID.Font = new Font("Segoe UI", 12F);
-            txtModificarID.Location = new Point(96, 18);
+            txtModificarID.Location = new Point(110, 24);
+            txtModificarID.Margin = new Padding(3, 4, 3, 4);
             txtModificarID.Name = "txtModificarID";
-            txtModificarID.Size = new Size(223, 29);
+            txtModificarID.Size = new Size(254, 34);
             txtModificarID.TabIndex = 6;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(10, 210);
+            label2.Location = new Point(11, 280);
             label2.Name = "label2";
-            label2.Size = new Size(58, 21);
+            label2.Size = new Size(72, 28);
             label2.TabIndex = 12;
             label2.Text = "Cliente";
             // 
@@ -182,9 +192,9 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 12F);
-            label13.Location = new Point(10, 21);
+            label13.Location = new Point(11, 28);
             label13.Name = "label13";
-            label13.Size = new Size(68, 21);
+            label13.Size = new Size(86, 28);
             label13.TabIndex = 24;
             label13.Text = "Mascota";
             // 
@@ -192,26 +202,28 @@
             // 
             cmbModificarCliente.Font = new Font("Segoe UI", 12F);
             cmbModificarCliente.FormattingEnabled = true;
-            cmbModificarCliente.Location = new Point(96, 207);
+            cmbModificarCliente.Location = new Point(110, 276);
+            cmbModificarCliente.Margin = new Padding(3, 4, 3, 4);
             cmbModificarCliente.Name = "cmbModificarCliente";
-            cmbModificarCliente.Size = new Size(223, 29);
+            cmbModificarCliente.Size = new Size(254, 36);
             cmbModificarCliente.TabIndex = 10;
             // 
             // dtpModificarFecha
             // 
             dtpModificarFecha.Font = new Font("Segoe UI", 12F);
-            dtpModificarFecha.Location = new Point(171, 252);
+            dtpModificarFecha.Location = new Point(195, 336);
+            dtpModificarFecha.Margin = new Padding(3, 4, 3, 4);
             dtpModificarFecha.Name = "dtpModificarFecha";
-            dtpModificarFecha.Size = new Size(215, 29);
+            dtpModificarFecha.Size = new Size(245, 34);
             dtpModificarFecha.TabIndex = 11;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(10, 258);
+            label8.Location = new Point(11, 344);
             label8.Name = "label8";
-            label8.Size = new Size(134, 21);
+            label8.Size = new Size(168, 28);
             label8.TabIndex = 22;
             label8.Text = "Fecha Nacimiento";
             // 
@@ -219,9 +231,9 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F);
-            label9.Location = new Point(10, 114);
+            label9.Location = new Point(11, 152);
             label9.Name = "label9";
-            label9.Size = new Size(43, 21);
+            label9.Size = new Size(53, 28);
             label9.TabIndex = 21;
             label9.Text = "Raza";
             // 
@@ -229,9 +241,9 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F);
-            label11.Location = new Point(10, 161);
+            label11.Location = new Point(11, 215);
             label11.Name = "label11";
-            label11.Size = new Size(61, 21);
+            label11.Size = new Size(76, 28);
             label11.TabIndex = 20;
             label11.Text = "Especie";
             // 
@@ -239,42 +251,46 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 12F);
-            label12.Location = new Point(10, 69);
+            label12.Location = new Point(11, 92);
             label12.Name = "label12";
-            label12.Size = new Size(68, 21);
+            label12.Size = new Size(85, 28);
             label12.TabIndex = 19;
             label12.Text = "Nombre";
             // 
             // txtModificarEspecie
             // 
             txtModificarEspecie.Font = new Font("Segoe UI", 12F);
-            txtModificarEspecie.Location = new Point(96, 158);
+            txtModificarEspecie.Location = new Point(110, 211);
+            txtModificarEspecie.Margin = new Padding(3, 4, 3, 4);
             txtModificarEspecie.Name = "txtModificarEspecie";
-            txtModificarEspecie.Size = new Size(223, 29);
+            txtModificarEspecie.Size = new Size(254, 34);
             txtModificarEspecie.TabIndex = 9;
             // 
             // txtModificarNombre
             // 
             txtModificarNombre.Font = new Font("Segoe UI", 12F);
-            txtModificarNombre.Location = new Point(96, 66);
+            txtModificarNombre.Location = new Point(110, 88);
+            txtModificarNombre.Margin = new Padding(3, 4, 3, 4);
             txtModificarNombre.Name = "txtModificarNombre";
-            txtModificarNombre.Size = new Size(223, 29);
+            txtModificarNombre.Size = new Size(254, 34);
             txtModificarNombre.TabIndex = 7;
             // 
             // txtModificarRaza
             // 
             txtModificarRaza.Font = new Font("Segoe UI", 12F);
-            txtModificarRaza.Location = new Point(96, 111);
+            txtModificarRaza.Location = new Point(110, 148);
+            txtModificarRaza.Margin = new Padding(3, 4, 3, 4);
             txtModificarRaza.Name = "txtModificarRaza";
-            txtModificarRaza.Size = new Size(223, 29);
+            txtModificarRaza.Size = new Size(254, 34);
             txtModificarRaza.TabIndex = 8;
             // 
             // btnModificar
             // 
             btnModificar.Font = new Font("Segoe UI", 12F);
-            btnModificar.Location = new Point(275, 287);
+            btnModificar.Location = new Point(314, 383);
+            btnModificar.Margin = new Padding(3, 4, 3, 4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(143, 42);
+            btnModificar.Size = new Size(163, 56);
             btnModificar.TabIndex = 12;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -296,9 +312,11 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(btnGuardar);
-            groupBox1.Location = new Point(73, 50);
+            groupBox1.Location = new Point(83, 67);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(437, 314);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(499, 419);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Alta Mascota";
@@ -306,9 +324,10 @@
             // btnConfirmar
             // 
             btnConfirmar.Font = new Font("Segoe UI", 12F);
-            btnConfirmar.Location = new Point(160, 257);
+            btnConfirmar.Location = new Point(183, 343);
+            btnConfirmar.Margin = new Padding(3, 4, 3, 4);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(134, 42);
+            btnConfirmar.Size = new Size(153, 56);
             btnConfirmar.TabIndex = 12;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = true;
@@ -317,9 +336,10 @@
             // btnBorrador
             // 
             btnBorrador.Font = new Font("Segoe UI", 12F);
-            btnBorrador.Location = new Point(10, 257);
+            btnBorrador.Location = new Point(11, 343);
+            btnBorrador.Margin = new Padding(3, 4, 3, 4);
             btnBorrador.Name = "btnBorrador";
-            btnBorrador.Size = new Size(144, 42);
+            btnBorrador.Size = new Size(165, 56);
             btnBorrador.TabIndex = 11;
             btnBorrador.Text = "Agregar Borrador";
             btnBorrador.UseVisualStyleBackColor = true;
@@ -329,9 +349,9 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 12F);
-            label14.Location = new Point(10, 174);
+            label14.Location = new Point(11, 232);
             label14.Name = "label14";
-            label14.Size = new Size(58, 21);
+            label14.Size = new Size(72, 28);
             label14.TabIndex = 10;
             label14.Text = "Cliente";
             // 
@@ -339,50 +359,55 @@
             // 
             cmbCliente.Font = new Font("Segoe UI", 12F);
             cmbCliente.FormattingEnabled = true;
-            cmbCliente.Location = new Point(96, 171);
+            cmbCliente.Location = new Point(110, 228);
+            cmbCliente.Margin = new Padding(3, 4, 3, 4);
             cmbCliente.Name = "cmbCliente";
-            cmbCliente.Size = new Size(223, 29);
+            cmbCliente.Size = new Size(254, 36);
             cmbCliente.TabIndex = 3;
             // 
             // dtpFecha
             // 
             dtpFecha.Font = new Font("Segoe UI", 12F);
-            dtpFecha.Location = new Point(150, 213);
+            dtpFecha.Location = new Point(171, 284);
+            dtpFecha.Margin = new Padding(3, 4, 3, 4);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(215, 29);
+            dtpFecha.Size = new Size(245, 34);
             dtpFecha.TabIndex = 4;
             // 
             // txtRaza
             // 
             txtRaza.Font = new Font("Segoe UI", 12F);
-            txtRaza.Location = new Point(96, 74);
+            txtRaza.Location = new Point(110, 99);
+            txtRaza.Margin = new Padding(3, 4, 3, 4);
             txtRaza.Name = "txtRaza";
-            txtRaza.Size = new Size(222, 29);
+            txtRaza.Size = new Size(253, 34);
             txtRaza.TabIndex = 1;
             // 
             // txtEspecie
             // 
             txtEspecie.Font = new Font("Segoe UI", 12F);
-            txtEspecie.Location = new Point(96, 122);
+            txtEspecie.Location = new Point(110, 163);
+            txtEspecie.Margin = new Padding(3, 4, 3, 4);
             txtEspecie.Name = "txtEspecie";
-            txtEspecie.Size = new Size(222, 29);
+            txtEspecie.Size = new Size(253, 34);
             txtEspecie.TabIndex = 2;
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Segoe UI", 12F);
-            txtNombre.Location = new Point(96, 29);
+            txtNombre.Location = new Point(110, 39);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(222, 29);
+            txtNombre.Size = new Size(253, 34);
             txtNombre.TabIndex = 0;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(10, 219);
+            label4.Location = new Point(11, 292);
             label4.Name = "label4";
-            label4.Size = new Size(134, 21);
+            label4.Size = new Size(168, 28);
             label4.TabIndex = 4;
             label4.Text = "Fecha Nacimiento";
             // 
@@ -390,9 +415,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(10, 77);
+            label7.Location = new Point(11, 103);
             label7.Name = "label7";
-            label7.Size = new Size(43, 21);
+            label7.Size = new Size(53, 28);
             label7.TabIndex = 3;
             label7.Text = "Raza";
             // 
@@ -400,9 +425,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(10, 125);
+            label6.Location = new Point(11, 167);
             label6.Name = "label6";
-            label6.Size = new Size(61, 21);
+            label6.Size = new Size(76, 28);
             label6.TabIndex = 2;
             label6.Text = "Especie";
             // 
@@ -410,9 +435,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(10, 29);
+            label5.Location = new Point(11, 39);
             label5.Name = "label5";
-            label5.Size = new Size(68, 21);
+            label5.Size = new Size(85, 28);
             label5.TabIndex = 1;
             label5.Text = "Nombre";
             // 
@@ -420,18 +445,19 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(6, 29);
+            label1.Location = new Point(7, 39);
             label1.Name = "label1";
-            label1.Size = new Size(68, 21);
+            label1.Size = new Size(85, 28);
             label1.TabIndex = 1;
             label1.Text = "Nombre";
             // 
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Segoe UI", 12F);
-            btnGuardar.Location = new Point(300, 257);
+            btnGuardar.Location = new Point(343, 343);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(131, 42);
+            btnGuardar.Size = new Size(150, 56);
             btnGuardar.TabIndex = 5;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -440,9 +466,10 @@
             // btnSalir
             // 
             btnSalir.Font = new Font("Segoe UI", 12F);
-            btnSalir.Location = new Point(1310, 759);
+            btnSalir.Location = new Point(1497, 1012);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(143, 42);
+            btnSalir.Size = new Size(163, 56);
             btnSalir.TabIndex = 15;
             btnSalir.Text = "Cerrar";
             btnSalir.UseVisualStyleBackColor = true;
@@ -450,14 +477,15 @@
             // 
             // FrmMascota
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1483, 822);
+            ClientSize = new Size(1695, 1055);
             Controls.Add(btnSalir);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmMascota";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Mascota";
