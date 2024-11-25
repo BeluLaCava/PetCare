@@ -11,7 +11,11 @@ namespace Entity
         public int ID { get; set; }
         public DateTime Fecha { get; set; }
         public decimal Total { get; set; }
-        public int ClienteID { get; set; }
+        public string Clientes{ get => Cliente.Nombre; }
+        public string Productos { get => Producto.Nombre; }
+        public int Cantidad { get; set; }
+        public Producto Producto { get; set; }
+        public Cliente Cliente { get; set; }
     }
 
 }

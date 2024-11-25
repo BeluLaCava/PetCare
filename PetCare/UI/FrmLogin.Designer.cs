@@ -35,13 +35,14 @@
             label2 = new Label();
             label3 = new Label();
             groupBox1 = new GroupBox();
+            btnSalir = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // btnLogin
             // 
             btnLogin.Font = new Font("Segoe UI", 12F);
-            btnLogin.Location = new Point(51, 230);
+            btnLogin.Location = new Point(50, 225);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(180, 43);
             btnLogin.TabIndex = 0;
@@ -62,6 +63,7 @@
             txtPass.Font = new Font("Segoe UI", 12F);
             txtPass.Location = new Point(50, 169);
             txtPass.Name = "txtPass";
+            txtPass.PasswordChar = '*';
             txtPass.Size = new Size(181, 29);
             txtPass.TabIndex = 2;
             // 
@@ -97,6 +99,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnSalir);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(btnLogin);
@@ -109,6 +112,17 @@
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             // 
+            // btnSalir
+            // 
+            btnSalir.Font = new Font("Segoe UI", 12F);
+            btnSalir.Location = new Point(50, 274);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(180, 43);
+            btnSalir.TabIndex = 6;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -117,7 +131,7 @@
             Controls.Add(groupBox1);
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmLogin";
+            Text = "Login";
             Load += FrmLogin_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -133,5 +147,6 @@
         private Label label2;
         private Label label3;
         private GroupBox groupBox1;
+        private Button btnSalir;
     }
 }

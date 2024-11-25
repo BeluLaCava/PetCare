@@ -20,7 +20,7 @@ namespace BLL
         {
             try
             {
-                using (var trx = new TransactionScope())
+                using (TransactionScope trx = new TransactionScope())
                 {
 
 
@@ -58,7 +58,7 @@ namespace BLL
         {
             try
             {
-                using (var trx = new TransactionScope())
+                using (TransactionScope trx = new TransactionScope())
                 {
 
 
@@ -99,12 +99,17 @@ namespace BLL
                 throw;
             }
         }
-        public void ModificarCliente(int idSeleccionado, string direccion, string email, string telefono)
+        public void ModificarCliente(int id, string apellido, string direccion, string email, string telefono)
         {
             try
             {
-                using (var trx = new TransactionScope())
+                using (TransactionScope trx = new TransactionScope())
                 {
+                    Cliente cliente = clienteData.GetById(id);
+                    if (cliente == null)
+                    {
+                        throw new Exception("El cliente no existe");
+                    }
                     if (string.IsNullOrEmpty(direccion))
                     {
                         throw new Exception("Complete la direccion");
@@ -118,7 +123,11 @@ namespace BLL
                     {
                         throw new Exception("Ingrese un email válido (ejemplo@ejemplo.com)");
                     }
-                    clienteData.ModificarCliente(idSeleccionado, direccion, email, telefono);
+                    cliente.Nombre = apellido;
+                    cliente.Email = email;
+                    cliente.Direccion = direccion;
+                    cliente.Telefono = telefono;
+                    clienteData.ModificarCliente(cliente);
                     trx.Complete();
                 }
             }
@@ -128,13 +137,18 @@ namespace BLL
                 throw;
             }
         }
-        public void EliminarCliente(int idcliente)
+        public void EliminarCliente(int id)
         {
             try
             {
-                using (var trx = new TransactionScope())
+                using (TransactionScope trx = new TransactionScope())
                 {
-                    clienteData.EliminarCliente(idcliente);
+                    Cliente cliente = clienteData.GetById(id);
+                    if (cliente == null)
+                    {
+                        throw new Exception("El cliente no existe");
+                    }
+                    clienteData.EliminarCliente(id);
                     trx.Complete();
                 }
             }
